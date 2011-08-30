@@ -11,12 +11,13 @@ public class Layoutless extends JPanel implements ComponentListener {
     public Layoutless() {
 	width = new Numeric().value(100);
 	height = new Numeric().value(100);
+	this.setOpaque(false);
 	this.setLayout(null);
 	this.addComponentListener(this);
     }
     @Override public void componentResized(ComponentEvent e) {
 	width.value(getSize().width);
-	height.value(getSize().height);
+	height.value(getSize().height);	
     }
     @Override public void componentMoved(ComponentEvent e) {
 	//
