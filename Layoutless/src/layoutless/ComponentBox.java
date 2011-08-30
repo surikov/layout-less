@@ -31,6 +31,7 @@ public class ComponentBox extends JPanel {
 		adjust();
 	    }
 	});
+	setOpaque(false);
 	setLayout(new BorderLayout());
     }
     public Numeric width() {

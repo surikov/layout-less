@@ -9,7 +9,6 @@ public class Example extends JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel iLabel;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -41,19 +40,9 @@ public class Example extends JFrame {
 	jTextField2.setText("jTextField2");
 	jPasswordField1.setText("jPasswordField1");
 	jButton1.setText("jButton1");
-	ImageIcon icon = new ImageIcon(getClass().getResource("Example.png"));
-	iLabel = new javax.swing.JLabel();
-	iLabel.setIcon(icon);
 	layoutless = new Layoutless();
 	int labelsWidth=150;
 	layoutless
-		.item(new ComponentBox()
-		    .component(iLabel)
-		    .width(253)
-		    .height(256)
-		    .x(0)
-		    .y(0)
-		    )
 		.item(new ComponentBox()
 		    .component(jLabel1)
 		    .width(labelsWidth)
