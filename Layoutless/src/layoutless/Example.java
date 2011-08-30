@@ -9,6 +9,7 @@ public class Example extends JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel iconLabel;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -18,7 +19,7 @@ public class Example extends JFrame {
     }
     public Example() {
 	setLayout(new BorderLayout());
-	setSize(400, 300);
+	setSize(400, 200);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	initComponents();
     }
@@ -26,6 +27,7 @@ public class Example extends JFrame {
 	jLabel1 = new javax.swing.JLabel();
 	jLabel2 = new javax.swing.JLabel();
 	jLabel3 = new javax.swing.JLabel();
+	iconLabel= new javax.swing.JLabel();
 	jTextField1 = new javax.swing.JTextField();
 	jTextField2 = new javax.swing.JTextField();
 	jPasswordField1 = new javax.swing.JPasswordField();
@@ -40,6 +42,7 @@ public class Example extends JFrame {
 	jTextField2.setText("jTextField2");
 	jPasswordField1.setText("jPasswordField1");
 	jButton1.setText("jButton1");
+	iconLabel.setIcon(new ImageIcon(getClass().getResource("Example.png")));
 	layoutless = new Layoutless();
 	int labelsWidth=150;
 	layoutless
@@ -92,6 +95,13 @@ public class Example extends JFrame {
 		    .x(labelsWidth+8)
 		    .y(layoutless.height().minus(40))
 		    )
+		.item(new ComponentBox()
+		    .component(iconLabel)
+		    .width(128)
+		    .height(128)
+		    .x(0)
+		    .y(layoutless.height().minus(140))
+		    )		
 		;
 	this.add(layoutless, BorderLayout.CENTER);
     }

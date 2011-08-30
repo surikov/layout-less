@@ -5,14 +5,15 @@ import java.awt.event.*;
 import tee.binding.*;
 import java.awt.*;
 
-public class Layoutless extends JPanel implements ComponentListener {
+public class Layoutless extends JLayeredPane  implements ComponentListener {
     private Numeric width;
     private Numeric height;
     public Layoutless() {
+	super();
+	this.add(new JInternalFrame());
 	width = new Numeric().value(100);
 	height = new Numeric().value(100);
 	this.setOpaque(false);
-	this.setLayout(null);
 	this.addComponentListener(this);
     }
     @Override public void componentResized(ComponentEvent e) {
