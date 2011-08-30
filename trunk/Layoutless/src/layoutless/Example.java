@@ -6,6 +6,7 @@ import java.awt.*;
 public class Example extends JFrame {
     private Layoutless layoutless;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -32,6 +33,7 @@ public class Example extends JFrame {
 	jTextField2 = new javax.swing.JTextField();
 	jPasswordField1 = new javax.swing.JPasswordField();
 	jButton1 = new javax.swing.JButton();
+	jButton2 = new javax.swing.JButton();
 	jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 	jLabel1.setText("jLabel1");
 	jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -42,6 +44,7 @@ public class Example extends JFrame {
 	jTextField2.setText("jTextField2");
 	jPasswordField1.setText("jPasswordField1");
 	jButton1.setText("jButton1");
+	jButton2.setText("...");
 	iconLabel.setIcon(new ImageIcon(getClass().getResource("Example.png")));
 	layoutless = new Layoutless();
 	int labelsWidth=150;
@@ -55,9 +58,16 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    .component(jTextField1)
-		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .width(layoutless.width().minus(labelsWidth).minus(16).minus(50))
 		    .height(22)
 		    .x(labelsWidth+8)
+		    .y(8+25*0)
+		    )
+		.item(new ComponentBox()
+		    .component(jButton2)
+		    .width(49)
+		    .height(21)
+		    .x(layoutless.width().minus(58))
 		    .y(8+25*0)
 		    )
 		.item(new ComponentBox()
@@ -83,7 +93,7 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    .component(jPasswordField1)
-		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .width(150)
 		    .height(22)
 		    .x(labelsWidth+8)
 		    .y(8+25*2)
