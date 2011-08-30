@@ -17,10 +17,6 @@ public class Layoutless extends JPanel implements ComponentListener {
     @Override public void componentResized(ComponentEvent e) {
 	width.value(getSize().width);
 	height.value(getSize().height);
-	this.invalidate();
-	this.doLayout();
-	this.validate();
-	this.repaint();
     }
     @Override public void componentMoved(ComponentEvent e) {
 	//
