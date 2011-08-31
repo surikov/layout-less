@@ -5,7 +5,7 @@ import java.awt.event.*;
 import tee.binding.*;
 import java.awt.*;
 
-public class Layoutless extends JLayeredPane  implements ComponentListener {
+public class Layoutless extends JLayeredPane implements ComponentListener {
     private Numeric width;
     private Numeric height;
     public Layoutless() {
@@ -18,7 +18,7 @@ public class Layoutless extends JLayeredPane  implements ComponentListener {
     }
     @Override public void componentResized(ComponentEvent e) {
 	width.value(getSize().width);
-	height.value(getSize().height);	
+	height.value(getSize().height);
     }
     @Override public void componentMoved(ComponentEvent e) {
 	//
@@ -38,5 +38,20 @@ public class Layoutless extends JLayeredPane  implements ComponentListener {
     public Layoutless item(ComponentBox it) {
 	this.add(it);
 	return this;
+    }
+    public void drop(JComponent it) {
+	for (int i = 0; i < this.getComponentCount(); i++) {
+	    Component c = this.getComponents()[i];
+	    if (c instanceof ComponentBox) {
+		ComponentBox cb = (ComponentBox) c;
+		Component t = cb.getComponent(0);
+		if (t == it) {
+		    cb.remove(t);
+		    cb.unbind();
+		    this.remove(cb);
+		    this.repaint();
+		}
+	    }
+	}
     }
 }

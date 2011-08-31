@@ -112,4 +112,10 @@ public class ComponentBox extends JPanel {
 	adjust();
 	return this;
     }
+    public void unbind(){
+	this.x.unbind();
+	this.y.unbind();
+	this.width.unbind();
+	this.height.unbind();
+    }
 }
