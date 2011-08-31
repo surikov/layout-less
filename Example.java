@@ -1,7 +1,9 @@
 package layoutless;
 
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Example extends JFrame {
     private Layoutless layoutless;
@@ -47,6 +49,12 @@ public class Example extends JFrame {
 	jButton2.setText("...");
 	iconLabel.setIcon(new ImageIcon(getClass().getResource("Example.png")));
 	layoutless = new Layoutless();
+	/*jButton1.addActionListener(new ActionListener(){
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+		layoutless.drop(jButton1);
+	    }
+	});*/
 	int labelsWidth=150;
 	layoutless
 		.item(new ComponentBox()
