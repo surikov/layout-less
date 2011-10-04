@@ -36,7 +36,8 @@ public class Example extends JFrame {
 	jPasswordField1.setText("jPasswordField1");
 	jButton1.setText("jButton1");
 	jButton2.setText("...");
-	iconLabel.setIcon(new ImageIcon(getClass().getResource("Example.png")));
+	//iconLabel.setIcon(new ImageIcon(getClass().getResource("Example.png")));
+	iconLabel.setIcon(new ImageIcon("keys.png"));
 	layoutless = new Layoutless();
 	int labelsWidth=150;
 	layoutless
@@ -96,7 +97,10 @@ public class Example extends JFrame {
 		    .y(8+25*2)
 		    )
 		.item(new ComponentBox()
-		    .component(jButton1)
+		    .component(new SimpleButton()
+			.text("jb1")
+			.icon(new ImageIcon("ok.png"))
+			.alignIconLeft(true))
 		    .width(90)
 		    .height(27)
 		    .x(labelsWidth+8)
