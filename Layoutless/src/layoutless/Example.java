@@ -5,11 +5,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import layoutless.controls.*;
+import tee.binding.*;
 
 public class Example extends JFrame {
     private Layoutless layoutless;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    //private javax.swing.JButton jButton1;
+    //private javax.swing.JButton jButton2;
     private javax.swing.JLabel iconLabel;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
@@ -29,36 +30,53 @@ public class Example extends JFrame {
 	jTextField1 = new javax.swing.JTextField();
 	jTextField2 = new javax.swing.JTextField();
 	jPasswordField1 = new javax.swing.JPasswordField();
-	jButton1 = new javax.swing.JButton();
-	jButton2 = new javax.swing.JButton();
+	//jButton1 = new javax.swing.JButton();
+	//jButton2 = new javax.swing.JButton();
 	jTextField1.setText("jTextField1");
 	jTextField2.setText("jTextField2");
 	jPasswordField1.setText("jPasswordField1");
-	jButton1.setText("jButton1");
-	jButton2.setText("...");
+	//jButton1.setText("jButton1");
+	//jButton2.setText("...");
 	//iconLabel.setIcon(new ImageIcon(getClass().getResource("Example.png")));
 	iconLabel.setIcon(new ImageIcon("keys.png"));
 	layoutless = new Layoutless();
 	int labelsWidth=150;
+	final SimpleTextField fle=new SimpleTextField();
 	layoutless
 		.item(new ComponentBox()
 		    .component(new SimpleLabel()
 			.text("File")
-			.alignTextLeft(false))
+			.normalAlignment(false))
 		    .width(labelsWidth)
 		    .height(22)
 		    .x(0)
 		    .y(8+25*0)
 		    )
 		.item(new ComponentBox()
-		    .component(jTextField1)
+		    .component(fle
+			.text("123")
+			)
 		    .width(layoutless.width().minus(labelsWidth).minus(16).minus(50))
 		    .height(22)
 		    .x(labelsWidth+8)
 		    .y(8+25*0)
 		    )
-		.item(new ComponentBox()
+		/*.item(new ComponentBox()
 		    .component(jButton2)
+		    .width(49)
+		    .height(21)
+		    .x(layoutless.width().minus(58))
+		    .y(8+25*0)
+		    )*/
+		.item(new ComponentBox()
+		    .component(new SimpleButton()
+			.text("...")
+			//.icon(new ImageIcon("ok.png"))
+			.task(new Task(){@Override public void doTask() {
+				System.out.println("...");
+				}
+			    })
+			.normalAlignment(true))
 		    .width(49)
 		    .height(21)
 		    .x(layoutless.width().minus(58))
@@ -67,7 +85,7 @@ public class Example extends JFrame {
 		.item(new ComponentBox()
 		    .component(new SimpleLabel()
 			.text("Name")
-			.alignTextLeft(false))
+			.normalAlignment(false))
 		    .width(labelsWidth)
 		    .height(22)
 		    .x(0)
@@ -83,7 +101,7 @@ public class Example extends JFrame {
 		.item(new ComponentBox()
 		    .component(new SimpleLabel()
 			.text("Password")
-			.alignTextLeft(false))
+			.normalAlignment(false))
 		    .width(labelsWidth)
 		    .height(22)
 		    .x(0)
@@ -100,7 +118,11 @@ public class Example extends JFrame {
 		    .component(new SimpleButton()
 			.text("jb1")
 			.icon(new ImageIcon("ok.png"))
-			.alignIconLeft(true))
+			.task(new Task(){@Override public void doTask() {
+				System.out.println(fle.text().value());
+				}
+			    })
+			.normalAlignment(true))
 		    .width(90)
 		    .height(27)
 		    .x(labelsWidth+8)
