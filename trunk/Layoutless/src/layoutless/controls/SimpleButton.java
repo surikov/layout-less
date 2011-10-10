@@ -1,14 +1,15 @@
 package layoutless.controls;
-
+import java.awt.event.*;
 import tee.binding.*;
 import layoutless.*;
 import javax.swing.*;
-
 public class SimpleButton extends JButton {
     private Note text;
-    private Toggle alignIconLeft;
+    private Task task;
+    private Toggle normalAlignment;
     private It<Icon> icon;
     public SimpleButton() {
+	super();
 	text = new Note().value("").afterChange(new Task() {
 	    @Override public void doTask() {
 		if (text != null) {
@@ -16,10 +17,10 @@ public class SimpleButton extends JButton {
 		}
 	    }
 	});
-	alignIconLeft = new Toggle().value(true).afterChange(new Task() {
+	normalAlignment = new Toggle().value(true).afterChange(new Task() {
 	    @Override public void doTask() {
-		if (alignIconLeft != null) {
-		    if (!alignIconLeft.value()) {
+		if (normalAlignment != null) {
+		    if (!normalAlignment.value()) {
 			setVerticalTextPosition(AbstractButton.BOTTOM);
 			setHorizontalTextPosition(AbstractButton.CENTER);
 		    } else {
@@ -29,17 +30,21 @@ public class SimpleButton extends JButton {
 		}
 	    }
 	});
-	if (!alignIconLeft.value()) {
+	if (!normalAlignment.value()) {
 	    setVerticalTextPosition(AbstractButton.BOTTOM);
 	    setHorizontalTextPosition(AbstractButton.CENTER);
 	} else {
 	    setHorizontalTextPosition(SwingConstants.TRAILING);
 	    setVerticalTextPosition(AbstractButton.CENTER);
 	}
-	//System.out.println(getVerticalTextPosition());
-
-	//
-
+	task = null;
+	this.addActionListener(new ActionListener() {
+	    @Override public void actionPerformed(ActionEvent e) {
+		if (task != null) {
+		    task.start();
+		}
+	    }
+	});
 	icon = new It<Icon>().afterChange(new Task() {
 	    @Override public void doTask() {
 		if (icon != null) {
@@ -59,16 +64,16 @@ public class SimpleButton extends JButton {
     public Note text() {
 	return text;
     }
-    public SimpleButton alignIconLeft(boolean it) {
-	alignIconLeft.value(it);
+    public SimpleButton normalAlignment(boolean it) {
+	normalAlignment.value(it);
 	return this;
     }
-    public SimpleButton alignIconLeft(Toggle it) {
-	alignIconLeft.bind(it);
+    public SimpleButton normalAlignment(Toggle it) {
+	normalAlignment.bind(it);
 	return this;
     }
-    public Toggle alignIconLeft() {
-	return alignIconLeft;
+    public Toggle normalAlignment() {
+	return normalAlignment;
     }
     public SimpleButton icon(Icon it) {
 	icon.value(it);
@@ -80,5 +85,12 @@ public class SimpleButton extends JButton {
     }
     public It<Icon> icon() {
 	return icon;
+    }
+    public SimpleButton task(Task it) {
+	task = it;
+	return this;
+    }
+    public Task task() {
+	return task;
     }
 }

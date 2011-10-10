@@ -6,8 +6,9 @@ import javax.swing.*;
 
 public class SimpleLabel extends JLabel {
     private Note text;
-    private Toggle alignTextLeft;
+    private Toggle normalAlignment;
     public SimpleLabel() {
+	super();
 	text = new Note().value("").afterChange(new Task() {
 	    @Override public void doTask() {
 		if (text != null) {
@@ -15,10 +16,10 @@ public class SimpleLabel extends JLabel {
 		}
 	    }
 	});
-	alignTextLeft = new Toggle().value(true).afterChange(new Task() {
+	normalAlignment = new Toggle().value(true).afterChange(new Task() {
 	    @Override public void doTask() {
-		if (alignTextLeft != null) {
-		    if (!alignTextLeft.value()) {
+		if (normalAlignment != null) {
+		    if (!normalAlignment.value()) {
 			setHorizontalAlignment(SwingConstants.RIGHT);
 		    } else {
 			setHorizontalAlignment(SwingConstants.LEFT);
@@ -26,7 +27,7 @@ public class SimpleLabel extends JLabel {
 		}
 	    }
 	});
-	if (!alignTextLeft.value()) {
+	if (!normalAlignment.value()) {
 	    setHorizontalAlignment(SwingConstants.RIGHT);
 	} else {
 	    setHorizontalAlignment(SwingConstants.LEFT);
@@ -43,15 +44,15 @@ public class SimpleLabel extends JLabel {
     public Note text() {
 	return text;
     }
-    public SimpleLabel alignTextLeft(boolean it) {
-	alignTextLeft.value(it);
+    public SimpleLabel normalAlignment(boolean it) {
+	normalAlignment.value(it);
 	return this;
     }
-    public SimpleLabel alignTextLeft(Toggle it) {
-	alignTextLeft.bind(it);
+    public SimpleLabel normalAlignment(Toggle it) {
+	normalAlignment.bind(it);
 	return this;
     }
-    public Toggle alignTextLeft() {
-	return alignTextLeft;
+    public Toggle normalAlignment() {
+	return normalAlignment;
     }
 }
