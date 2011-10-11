@@ -15,8 +15,8 @@ public class Example extends JFrame {
     //private javax.swing.JButton jButton2;
     private javax.swing.JLabel iconLabel;
     //private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    //private javax.swing.JTextField jTextField1;
+    //private javax.swing.JTextField jTextField2;
     public static void main(String[] args) {
 	JFrame frame = new Example();
 	frame.setVisible(true);
@@ -29,13 +29,13 @@ public class Example extends JFrame {
     }
     private void initComponents() {
 	iconLabel= new javax.swing.JLabel();
-	jTextField1 = new javax.swing.JTextField();
-	jTextField2 = new javax.swing.JTextField();
+	//jTextField1 = new javax.swing.JTextField();
+	//jTextField2 = new javax.swing.JTextField();
 	//jPasswordField1 = new javax.swing.JPasswordField();
 	//jButton1 = new javax.swing.JButton();
 	//jButton2 = new javax.swing.JButton();
-	jTextField1.setText("jTextField1");
-	jTextField2.setText("jTextField2");
+	//jTextField1.setText("jTextField1");
+	//jTextField2.setText("jTextField2");
 	//jPasswordField1.setText("jPasswordField1");
 	//jButton1.setText("jButton1");
 	//jButton2.setText("...");
@@ -45,6 +45,7 @@ public class Example extends JFrame {
 	int labelsWidth=150;
 	final SimpleTextField fle=new SimpleTextField();
 	final SimplePasswordField psw=new SimplePasswordField();
+	final SimpleNumberField nu=new SimpleNumberField();
 	layoutless
 		.item(new ComponentBox()
 		    .component(new SimpleLabel()
@@ -95,7 +96,7 @@ public class Example extends JFrame {
 		    .y(8+25*1)
 		    )
 		.item(new ComponentBox()
-		    .component(jTextField2)
+		    .component(nu)
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(22)
 		    .x(labelsWidth+8)
@@ -124,7 +125,8 @@ public class Example extends JFrame {
 			.task(new Task(){@Override public void doTask() {
 				System.out.println(
 					//fle.text().value()
-					psw.text().value()
+					//psw.text().value()
+					nu.numeric().value()
 					);
 				}
 			    })
@@ -142,6 +144,7 @@ public class Example extends JFrame {
 		    .y(layoutless.height().minus(140))
 		    )
 		;
+	//nu.minimum(5).maximum(9).decimalPlaces(3).numeric(17.123456);
 	this.add(layoutless, BorderLayout.CENTER);
     }
 }
