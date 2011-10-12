@@ -104,7 +104,10 @@ public class ComponentBox extends JPanel {
 	    this.setPreferredSize(d);
 	}
 	this.setLocation(x.value().intValue(), y.value().intValue());
-	this.doLayout();
+	//this.invalidate();
+	this.validate();
+	//this.doLayout();
+	//this.repaint();
     }
     public ComponentBox component(JComponent it) {
 	this.removeAll();
