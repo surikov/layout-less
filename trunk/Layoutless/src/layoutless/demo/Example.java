@@ -11,12 +11,6 @@ import tee.binding.*;
 
 public class Example extends JFrame {
     private Layoutless layoutless;
-    //private javax.swing.JButton jButton1;
-    //private javax.swing.JButton jButton2;
-    private javax.swing.JLabel iconLabel;
-    //private javax.swing.JPasswordField jPasswordField1;
-    //private javax.swing.JTextField jTextField1;
-    //private javax.swing.JTextField jTextField2;
     public static void main(String[] args) {
 	JFrame frame = new Example();
 	frame.setVisible(true);
@@ -28,19 +22,6 @@ public class Example extends JFrame {
 	initComponents();
     }
     private void initComponents() {
-	iconLabel= new javax.swing.JLabel();
-	//jTextField1 = new javax.swing.JTextField();
-	//jTextField2 = new javax.swing.JTextField();
-	//jPasswordField1 = new javax.swing.JPasswordField();
-	//jButton1 = new javax.swing.JButton();
-	//jButton2 = new javax.swing.JButton();
-	//jTextField1.setText("jTextField1");
-	//jTextField2.setText("jTextField2");
-	//jPasswordField1.setText("jPasswordField1");
-	//jButton1.setText("jButton1");
-	//jButton2.setText("...");
-	//iconLabel.setIcon(new ImageIcon(getClass().getResource("Example.png")));
-	iconLabel.setIcon(new ImageIcon("keys.png"));
 	layoutless = new Layoutless();
 	int labelsWidth=150;
 	final SimpleTextField fle=new SimpleTextField();
@@ -65,17 +46,9 @@ public class Example extends JFrame {
 		    .x(labelsWidth+8)
 		    .y(8+25*0)
 		    )
-		/*.item(new ComponentBox()
-		    .component(jButton2)
-		    .width(49)
-		    .height(21)
-		    .x(layoutless.width().minus(58))
-		    .y(8+25*0)
-		    )*/
 		.item(new ComponentBox()
 		    .component(new SimpleButton()
 			.text("...")
-			//.icon(new ImageIcon("ok.png"))
 			.task(new Task(){@Override public void doTask() {
 				System.out.println("...");
 				}
@@ -123,11 +96,7 @@ public class Example extends JFrame {
 			.text("jb1")
 			.icon(new ImageIcon("ok.png"))
 			.task(new Task(){@Override public void doTask() {
-				System.out.println(
-					//fle.text().value()
-					//psw.text().value()
-					nu.numeric().value()
-					);
+				System.out.println(nu.numeric().value());
 				}
 			    })
 			.normalAlignment(true))
@@ -137,7 +106,7 @@ public class Example extends JFrame {
 		    .y(layoutless.height().minus(40))
 		    )
 		.item(new ComponentBox()
-		    .component(iconLabel)
+		    .component(new SimpleIcon().icon(new ImageIcon("keys.png")))
 		    .width(128)
 		    .height(128)
 		    .x(0)
