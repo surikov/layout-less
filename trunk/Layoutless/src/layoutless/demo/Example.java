@@ -112,6 +112,13 @@ public class Example extends JFrame {
 		    .x(0)
 		    .y(layoutless.height().minus(140))
 		    )
+		.item(new ComponentBox()
+		    .component(new SimpleWait().horizontal(false))
+		    .width(8)
+		    .height(100)
+		    .x(8)
+		    .y(8)
+		    )
 		;
 	//nu.minimum(5).maximum(9).decimalPlaces(3).numeric(17.123456);
 	this.add(layoutless, BorderLayout.CENTER);
