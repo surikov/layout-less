@@ -14,23 +14,19 @@ public class SimpleIcon extends JLabel {
 		}
 	    }
 	});
-	this.addComponentListener(new ComponentListener() {
+	/*this.addComponentListener(new ComponentListener() {
 	    @Override public void componentResized(ComponentEvent e) {
-		//throw new UnsupportedOperationException("Not supported yet.");
 		//adjust();
 	    }
 	    @Override public void componentMoved(ComponentEvent e) {
-		//throw new UnsupportedOperationException("Not supported yet.");
 	    }
 	    @Override public void componentShown(ComponentEvent e) {
-		//throw new UnsupportedOperationException("Not supported yet.");
 	    }
 	    @Override public void componentHidden(ComponentEvent e) {
-		//throw new UnsupportedOperationException("Not supported yet.");
 	    }
-	});
+	});*/
     }
-    private void adjust() {
+    /*private void adjust() {
 	if (icon.value() == null) {
 	    return;
 	}
@@ -41,7 +37,7 @@ public class SimpleIcon extends JLabel {
 	if (cw >= 0 && ch >= 0 && iw >= 0 && ih >= 0) {
 	    System.out.println("" + cw + "x" + ch+"/" + iw + "x" + ih);
 	}
-    }
+    }*/
     public SimpleIcon icon(Icon it) {
 	icon.value(it);
 	return this;
