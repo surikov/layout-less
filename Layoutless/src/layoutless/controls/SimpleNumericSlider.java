@@ -15,18 +15,25 @@ public class SimpleNumericSlider extends JSlider {
     private Numeric step;
     public SimpleNumericSlider() {
 	super();
-	me=this;
+	me = this;
 	this.setPaintLabels(true);
 	this.setPaintTicks(true);
 	this.setPaintTrack(true);
-	this.setMajorTickSpacing(64);
-	this.setMinorTickSpacing(16);
-	addChangeListener(new ChangeListener (){
+
+	addChangeListener(new ChangeListener() {
 	    @Override
 	    public void stateChanged(ChangeEvent e) {
-		//System.out.println(me);
+		System.out.println(me.getValue());
 	    }
 	});
+	adjust();
+    }
+    private void adjust() {
+	this.setMinimum(-123000);
+	this.setMaximum(123000);
+	int sz=Math.abs(this.getMinimum()) + Math.abs(this.getMaximum());
+	this.setMajorTickSpacing(sz);
+	this.setMinorTickSpacing(sz/5);
     }
     public SimpleNumericSlider numeric(double it) {
 	numeric.value(it);
@@ -43,7 +50,6 @@ public class SimpleNumericSlider extends JSlider {
     public Numeric numeric() {
 	return numeric;
     }
-    
     public SimpleNumericSlider minimum(double it) {
 	minimum.value(it);
 	return this;
@@ -59,8 +65,6 @@ public class SimpleNumericSlider extends JSlider {
     public Numeric minimum() {
 	return minimum;
     }
-    
-    
     public SimpleNumericSlider maximum(double it) {
 	maximum.value(it);
 	return this;
@@ -76,8 +80,6 @@ public class SimpleNumericSlider extends JSlider {
     public Numeric maximum() {
 	return maximum;
     }
-    
-    
     public SimpleNumericSlider step(double it) {
 	step.value(it);
 	return this;
@@ -93,5 +95,4 @@ public class SimpleNumericSlider extends JSlider {
     public Numeric step() {
 	return step;
     }
-    
 }
