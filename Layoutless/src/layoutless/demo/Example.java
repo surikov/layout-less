@@ -15,6 +15,9 @@ public class Example extends JFrame {
 	JFrame frame = new Example();
 	frame.setVisible(true);
     }
+     public static String getVersion() {
+	return "1.2.8";
+    }
     public Example() {
 	setLayout(new BorderLayout());
 	setSize(500, 400);
@@ -27,6 +30,7 @@ public class Example extends JFrame {
 	final SimpleTextField fle=new SimpleTextField();
 	final SimplePasswordField psw=new SimplePasswordField();
 	final SimpleNumberField nu=new SimpleNumberField();
+	final Numeric num=new Numeric().value(20);
 	layoutless
 		.item(new ComponentBox()
 		    .component(new SimpleLabel()
@@ -39,7 +43,7 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    .component(fle
-			.text("123")
+			.text(num.asNote())
 			)
 		    .width(layoutless.width().minus(labelsWidth).minus(16).minus(50))
 		    .height(22)
@@ -69,7 +73,7 @@ public class Example extends JFrame {
 		    .y(8+25*1)
 		    )
 		.item(new ComponentBox()
-		    .component(nu)
+		    .component(nu.numeric(num))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(22)
 		    .x(labelsWidth+8)
@@ -92,6 +96,13 @@ public class Example extends JFrame {
 		    .y(8+25*2)
 		    )
 		.item(new ComponentBox()
+		    .component(new SimpleNumericSlider())
+		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .height(50)
+		    .x(labelsWidth+8)
+		    .y(8+25*3)
+		    )
+		.item(new ComponentBox()
 		    .component(new SimpleButton()
 			.text("jb1")
 			.icon(new ImageIcon("ok.png"))
@@ -107,7 +118,7 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    .component(new SimpleIcon().icon(new ImageIcon("keys.png")))
-		    .width(128)
+		    .width(64)
 		    .height(128)
 		    .x(0)
 		    .y(layoutless.height().minus(140))
