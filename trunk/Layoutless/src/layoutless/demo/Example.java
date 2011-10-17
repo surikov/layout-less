@@ -96,7 +96,7 @@ public class Example extends JFrame {
 		    .y(8+25*2)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleNumericSlider())
+		    .component(new SimpleNumericSlider().numeric(20))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(50)
 		    .x(labelsWidth+8)
