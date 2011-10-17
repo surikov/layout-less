@@ -35,13 +35,13 @@ public class SimpleNumberField extends JSpinner {
 		adjust();
 	    }
 	});
-	decimalPlaces = new Numeric().value(2.0).afterChange(new Task() {
+	decimalPlaces = new Numeric().value(1.0).afterChange(new Task() {
 
 	    @Override public void doTask() {
 		adjust();
 	    }
 	});
-	numeric = new Numeric().value(10.023).afterChange(new Task() {
+	numeric = new Numeric().value(0).afterChange(new Task() {
 
 	    @Override public void doTask() {
 		if (!lock) {
