@@ -1,5 +1,6 @@
 package layoutless.demo;
 
+import layoutless.decor.SimpleImage;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.*;
@@ -103,6 +104,13 @@ public class Example extends JFrame {
 		    .y(8+25*3)
 		    )
 		.item(new ComponentBox()
+		    .component(new SimpleCheck().text("123srtb"))
+		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .height(50)
+		    .x(labelsWidth+8)
+		    .y(8+25*5)
+		    )
+		.item(new ComponentBox()
 		    .component(new SimpleButton()
 			.text("jb1")
 			.icon(new ImageIcon("ok.png"))
@@ -118,10 +126,10 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    .component(new SimpleImage().image(new ImageIcon("keys.png").getImage()))
-		    .width(400)
-		    .height(400)
-		    .x(0)
-		    .y(layoutless.height().minus(400))
+		    .width(200)
+		    .height(200)
+		    .x(100)
+		    .y(layoutless.height().minus(200))
 		    /*.x(100)
 		    .y(0)
 		    .width(200)

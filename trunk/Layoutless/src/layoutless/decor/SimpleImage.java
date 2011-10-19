@@ -1,4 +1,4 @@
-package layoutless.controls;
+package layoutless.decor;
 
 import java.awt.event.*;
 import tee.binding.*;
@@ -46,7 +46,7 @@ public class SimpleImage extends JComponent {
 		int cw = getSize().width;
 		int ch = getSize().height;
 		readImageSize();
-		//System.out.println("repaint "+cw+"x"+ch+" / "+iconWidth+"x"+iconHeight);
+		//fiSystem.out.println("repaint "+cw+"x"+ch+" / "+iconWidth+"x"+iconHeight);
 		//ImageIcon ii=(ImageIcon)icon.value();
 		//g.fillOval(0, 0, iconWidth, iconHeight);
 		g.drawImage(image.value(), 0, 0, cw,ch,null);

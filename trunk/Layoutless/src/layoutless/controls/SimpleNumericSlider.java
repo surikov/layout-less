@@ -21,6 +21,7 @@ public class SimpleNumericSlider extends JSlider {
 	this.setPaintLabels(true);
 	this.setPaintTicks(true);
 	this.setPaintTrack(true);
+	this.setOpaque(false);
 	minimum = new Numeric().value(-100.0).afterChange(new Task() {
 
 	    @Override public void doTask() {
