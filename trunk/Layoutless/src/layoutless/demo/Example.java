@@ -17,7 +17,7 @@ public class Example extends JFrame {
 	frame.setVisible(true);
     }
      public static String getVersion() {
-	return "1.2.8";
+	return "1.2.9";
     }
     public Example() {
 	setLayout(new BorderLayout());
@@ -104,11 +104,25 @@ public class Example extends JFrame {
 		    .y(8+25*3)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleCheck().text("123srtb"))
+		    .component(new SimpleCheck().text("test check"))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
-		    .height(50)
+		    .height(22)
 		    .x(labelsWidth+8)
 		    .y(8+25*5)
+		    )
+		.item(new ComponentBox()
+		    .component(new SimpleSelector().fit(new Fit()
+			.item("English", "w1", "First")
+			.item("English", "w2", "Second")
+			.item("English", "w3", "Third")
+			.item("Spain", "w1", "Primero")
+			.item("Spain", "w2", "Segundo")
+			.item("Spain", "w3", "Tercera")
+			))
+		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .height(22)
+		    .x(labelsWidth+8)
+		    .y(8+25*6)
 		    )
 		.item(new ComponentBox()
 		    .component(new SimpleButton()
