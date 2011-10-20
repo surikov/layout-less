@@ -17,6 +17,7 @@ public class SimpleSelector<Kind> extends JComboBox {
     public SimpleSelector() {
 	super();
 	me = this;
+	fit = new Fit<Kind>();
 	model = new DefaultComboBoxModel();
 	this.setModel(model);
 	model.addElement("111");
@@ -31,7 +32,9 @@ public class SimpleSelector<Kind> extends JComboBox {
 	    }
 	});
     }
-    public SimpleSelector fit(Fit fit){
+
+    public SimpleSelector fit(Fit _fit) {
+	this.fit.bind(_fit);
 	return this;
     }
 }
