@@ -32,6 +32,26 @@ public class Example extends JFrame {
 	final SimplePasswordField psw=new SimplePasswordField();
 	final SimpleNumberField nu=new SimpleNumberField();
 	final Numeric num=new Numeric().value(20);
+	
+	ColumnNote nm = new ColumnNote();
+	ColumnNumeric age = new ColumnNumeric();
+	ColumnNote mail = new ColumnNote();
+	ColumnToggle man = new ColumnToggle();
+	View addrBook = new View()//
+		.row(new Row().field(nm.is("Vasya")).field(man.is(true)).field(age.is(19)).field(mail.is("vpupkin@mail.ru")))//
+		.row(new Row().field(nm.is("Petya")).field(man.is(true)).field(age.is(22)).field(mail.is("petrpetrov@gmail.com")))//
+		.row(new Row().field(nm.is("Sasha")).field(man.is(true)).field(age.is(20)).field(mail.is("alxndr@aol.com")))//
+		.row(new Row().field(nm.is("Masha")).field(man.is(false)).field(age.is(18)).field(mail.is("masha@mail.ru")))//
+		.row(new Row().field(nm.is("Kolya")).field(man.is(true)).field(age.is(21)).field(mail.is("nikolay@gmail.com")))//
+		.row(new Row().field(nm.is("Vanya")).field(man.is(true)).field(age.is(22)).field(mail.is("ivan@mail.ru")))//
+		.row(new Row().field(nm.is("Olya")).field(man.is(false)).field(age.is(17)).field(mail.is("olga@aol.com")))//
+		.row(new Row().field(nm.is("Vika")).field(man.is(false)).field(age.is(21)).field(mail.is("avictorya@gmail.com")))//
+		.row(new Row().field(nm.is("Misha")).field(man.is(true)).field(age.is(23)).field(mail.is("mike@mail.ru")))//
+		.row(new Row().field(nm.is("Glasha")).field(man.is(false)).field(age.is(20)).field(mail.is("glasha@gmail.com")))//
+		;
+	
+	
+	
 	layoutless
 		.item(new ComponentBox()
 		    .component(new SimpleLabel()
@@ -111,14 +131,15 @@ public class Example extends JFrame {
 		    .y(8+25*5)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleSelector().fit(new Fit()
+		    .component(new SimpleSelector()
+			/*.fit(new Fit()
 			.item("English", "w1", "First")
 			.item("English", "w2", "Second")
 			.item("English", "w3", "Third")
 			.item("Spain", "w1", "Primero")
 			.item("Spain", "w2", "Segundo")
 			.item("Spain", "w3", "Tercera")
-			))
+			)*/)
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(22)
 		    .x(labelsWidth+8)
