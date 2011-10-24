@@ -32,7 +32,7 @@ public class Example extends JFrame {
 	final SimplePasswordField psw=new SimplePasswordField();
 	final SimpleNumberField nu=new SimpleNumberField();
 	final Numeric num=new Numeric().value(20);
-	
+
 	ColumnNote nm = new ColumnNote();
 	ColumnNumeric age = new ColumnNumeric();
 	ColumnNote mail = new ColumnNote();
@@ -49,9 +49,9 @@ public class Example extends JFrame {
 		.row(new Row().field(nm.is("Misha")).field(man.is(true)).field(age.is(23)).field(mail.is("mike@mail.ru")))//
 		.row(new Row().field(nm.is("Glasha")).field(man.is(false)).field(age.is(20)).field(mail.is("glasha@gmail.com")))//
 		;
-	
-	
-	
+
+
+
 	layoutless
 		.item(new ComponentBox()
 		    .component(new SimpleLabel()
@@ -131,7 +131,7 @@ public class Example extends JFrame {
 		    .y(8+25*5)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleSelector()
+		    .component(new SimpleSelector().bind(addrBook.where(age.is().more(20)), nm)
 			/*.fit(new Fit()
 			.item("English", "w1", "First")
 			.item("English", "w2", "Second")
