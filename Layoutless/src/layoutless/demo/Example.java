@@ -49,9 +49,16 @@ public class Example extends JFrame {
 		.row(new Row().field(nm.is("Misha")).field(man.is(true)).field(age.is(23)).field(mail.is("mike@mail.ru")))//
 		.row(new Row().field(nm.is("Glasha")).field(man.is(false)).field(age.is(20)).field(mail.is("glasha@gmail.com")))//
 		;
-
-
-
+	View list=addrBook.where(age.is().more(20));
+	final Numeric sel=new Numeric();
+	final Note curMail=mail.at(list.row(sel));
+	sel.value(1).afterChange(new Task(){
+	    @Override public void doTask() {
+		System.out.println("sel: "+sel.value()+", curMail: "+curMail.value());
+	    }
+	});
+	
+	
 	layoutless
 		.item(new ComponentBox()
 		    .component(new SimpleLabel()
@@ -131,7 +138,7 @@ public class Example extends JFrame {
 		    .y(8+25*5)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleSelector().bind(addrBook.where(age.is().more(20)), nm)
+		    .component(new SimpleSelector().bind(list, nm).selection(sel)
 			/*.fit(new Fit()
 			.item("English", "w1", "First")
 			.item("English", "w2", "Second")

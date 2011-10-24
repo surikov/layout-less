@@ -1,5 +1,4 @@
 package layoutless.controls;
-
 import java.awt.event.*;
 import tee.binding.*;
 import layoutless.*;
@@ -7,18 +6,26 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.text.*;
 import java.math.*;
-
-public class SimpleSelector<Kind> extends JComboBox {
-
+public class SimpleSelector extends JComboBox {
     private DefaultComboBoxModel model;
     private SimpleSelector me;
     private //private Fit<Kind> fit;
 	    View view;
-    ColumnNote column;
-
+    private ColumnNote column;
+    private Numeric selection;
     public SimpleSelector() {
 	super();
 	me = this;
+	selection = new Numeric().value(0).afterChange(new Task() {
+	    @Override public void doTask() {
+		if (selection != null) {
+		    int s = selection.value().intValue();
+		    if (s >= 0 && s < me.model.getSize()) {
+			me.setSelectedIndex(s);
+		    }
+		}
+	    }
+	});
 	//fit = new Fit<Kind>();
 	model = new DefaultComboBoxModel();
 	this.setModel(model);
@@ -27,15 +34,29 @@ public class SimpleSelector<Kind> extends JComboBox {
 	 model.removeAllElements();
 	 model.addElement("333"); */
 	addItemListener(new ItemListener() {
-
 	    @Override public void itemStateChanged(ItemEvent e) {
 		if (e.getStateChange() == e.SELECTED) {
-		    System.out.println("selector " + me.getSelectedIndex());
+		    //System.out.println("selector " + me.getSelectedIndex());
+		    selection.value(me.getSelectedIndex());
 		}
 	    }
 	});
     }
-
+    public Numeric selection() {
+	return selection;
+    }
+    public SimpleSelector selection(Numeric it) {
+	selection.bind(it);
+	return this;
+    }
+    public SimpleSelector selection(double it) {
+	selection.value(it);
+	return this;
+    }
+    public SimpleSelector selection(int it) {
+	selection.value(it);
+	return this;
+    }
     private void requery() {
 	System.out.println("requery");
 	if (view != null && column != null) {
@@ -46,11 +67,9 @@ public class SimpleSelector<Kind> extends JComboBox {
 	    }
 	}
     }
-
     public SimpleSelector bind(View v, ColumnNote c) {
 	column = c;
 	view = v.select().afterRefresh(new Task() {
-
 	    @Override public void doTask() {
 		requery();
 	    }
