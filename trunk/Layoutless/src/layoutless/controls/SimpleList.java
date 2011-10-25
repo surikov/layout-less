@@ -13,9 +13,8 @@ public class SimpleList extends JScrollPane {
     private DefaultListModel model;
     private SimpleList me;
     private JList list;
-    private //private Fit<Kind> fit;
-	    View view;
-    private ColumnNote column;
+    private View view;
+    private Note column;
     private Numeric selection;
 
     public SimpleList() {
@@ -64,17 +63,17 @@ public class SimpleList extends JScrollPane {
     }
 
     private void requery() {
-	System.out.println("requery");
+	//System.out.println("requery");
 	if (view != null && column != null) {
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
 		view.move(i);
-		model.addElement(column.is().value());
+		model.addElement(column.value());
 	    }
 	}
     }
 
-    public SimpleList bind(View v, ColumnNote c) {
+    public SimpleList bind(View v, Note c) {
 	column = c;
 	view = v.select().afterRefresh(new Task() {
 

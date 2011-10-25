@@ -11,7 +11,7 @@ public class SimpleSelector extends JComboBox {
     private SimpleSelector me;
     private //private Fit<Kind> fit;
 	    View view;
-    private ColumnNote column;
+    private Note column;
     private Numeric selection;
     public SimpleSelector() {
 	super();
@@ -58,16 +58,16 @@ public class SimpleSelector extends JComboBox {
 	return this;
     }
     private void requery() {
-	System.out.println("requery");
+	//System.out.println("requery");
 	if (view != null && column != null) {
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
 		view.move(i);
-		model.addElement(column.is().value());
+		model.addElement(column.value());
 	    }
 	}
     }
-    public SimpleSelector bind(View v, ColumnNote c) {
+    public SimpleSelector bind(View v, Note c) {
 	column = c;
 	view = v.select().afterRefresh(new Task() {
 	    @Override public void doTask() {
