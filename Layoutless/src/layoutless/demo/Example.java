@@ -57,8 +57,8 @@ public class Example extends JFrame {
 		System.out.println("sel: "+sel.value()+", curMail: "+curMail.value());
 	    }
 	});
-	
-	
+
+
 	layoutless
 		.item(new ComponentBox()
 		    .component(new SimpleLabel()
@@ -138,19 +138,18 @@ public class Example extends JFrame {
 		    .y(8+25*5)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleSelector().bind(list, nm).selection(sel)
-			/*.fit(new Fit()
-			.item("English", "w1", "First")
-			.item("English", "w2", "Second")
-			.item("English", "w3", "Third")
-			.item("Spain", "w1", "Primero")
-			.item("Spain", "w2", "Segundo")
-			.item("Spain", "w3", "Tercera")
-			)*/)
+		    .component(new SimpleSelector().bind(list, nm).selection(sel))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(22)
 		    .x(labelsWidth+8)
 		    .y(8+25*6)
+		    )
+		.item(new ComponentBox()
+		    .component(new SimpleList().bind(list, nm).selection(sel))
+		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .height(50)
+		    .x(labelsWidth+8)
+		    .y(8+25*7)
 		    )
 		.item(new ComponentBox()
 		    .component(new SimpleButton()
