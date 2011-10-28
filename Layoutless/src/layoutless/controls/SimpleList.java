@@ -1,7 +1,11 @@
 package layoutless.controls;
 
+import java.awt.*;
 import java.awt.event.*;
 import tee.binding.*;
+import tee.binding.view.*;
+import tee.binding.it.*;
+import tee.binding.task.*;
 import layoutless.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -20,6 +24,13 @@ public class SimpleList extends JScrollPane {
     public SimpleList() {
 	super();
 	list = new JList();
+	//list.setOpaque(false);
+	//this.setOpaque(false);
+	//this.getViewport().setOpaque(false);
+	//list.setBackground(Color.red);
+	//this.getViewport().setBackground(Color.blue);
+	//this.setBackground(Color.green);
+
 	this.getViewport().add(list);
 	me = this;
 	selection = new Numeric().value(0).afterChange(new Task() {
@@ -75,7 +86,7 @@ public class SimpleList extends JScrollPane {
 
     public SimpleList bind(View v, Note c) {
 	column = c;
-	view = v.select().afterRefresh(new Task() {
+	view = v.select(new Toggle().value(true)).afterRefresh(new Task() {
 
 	    @Override public void doTask() {
 		requery();
