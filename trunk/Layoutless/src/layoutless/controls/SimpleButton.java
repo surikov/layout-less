@@ -1,6 +1,7 @@
 package layoutless.controls;
 import java.awt.event.*;
-import tee.binding.*;
+import tee.binding.it.*;
+import tee.binding.task.*;
 import layoutless.*;
 import javax.swing.*;
 public class SimpleButton extends JButton {

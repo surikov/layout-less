@@ -1,6 +1,10 @@
 package layoutless.controls;
 import java.awt.event.*;
 import tee.binding.*;
+import tee.binding.view.*;
+import tee.binding.it.*;
+import tee.binding.task.*;
+
 import layoutless.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -69,7 +73,7 @@ public class SimpleSelector extends JComboBox {
     }
     public SimpleSelector bind(View v, Note c) {
 	column = c;
-	view = v.select().afterRefresh(new Task() {
+	view = v.select(new Toggle().value(true)).afterRefresh(new Task() {
 	    @Override public void doTask() {
 		requery();
 	    }
