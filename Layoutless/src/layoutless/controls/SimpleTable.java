@@ -12,7 +12,7 @@ import java.text.*;
 import java.math.*;
 import java.util.*;
 public class SimpleTable extends JScrollPane {
-    TableModel model;
+    DefaultTableColumnModel model;
     private SimpleTable me;
     private JTable table;
     private View view;
@@ -23,6 +23,7 @@ public class SimpleTable extends JScrollPane {
 	columns = new Vector<TableColumn>();
 	this.setOpaque(false);
 	this.getViewport().setOpaque(false);
+	model=new DefaultTableColumnModel();
 	/*
 	model = new AbstractTableModel() {
 	    @Override public int getColumnCount() {
@@ -35,7 +36,7 @@ public class SimpleTable extends JScrollPane {
 		return new Integer(row * col);
 	    }
 	};
-	
+
 	table = new JTable(model);*/
 	this.getViewport().add(table);
     }
