@@ -17,6 +17,7 @@ public class SimpleTextField extends JScrollPane {
 	super();
 	me = this;
 	lock = false;
+	area.setFont(area.getFont().deriveFont(12f)); // will only change size to 12pt
 	text = new Note().value("").afterChange(new Task() {
 
 	    @Override public void doTask() {
