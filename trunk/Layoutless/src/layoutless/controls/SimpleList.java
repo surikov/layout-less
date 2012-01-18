@@ -86,7 +86,7 @@ public class SimpleList extends JScrollPane {
 
     public SimpleList bind(View v, Note c) {
 	column = c;
-	view = v.select(new Toggle().value(true)).afterRefresh(new Task() {
+	view = v.select(new Toggle().value(true)).afterChange(new Task() {
 
 	    @Override public void doTask() {
 		requery();

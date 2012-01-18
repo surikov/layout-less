@@ -25,14 +25,14 @@ public class Example extends JFrame {
     }
     public Example() {
 	setLayout(new BorderLayout());
-	setSize(500, 400);
+	setSize(500, 600);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	initComponents();
     }
     private void initComponents() {
 	layoutless = new Layoutless();
 	int labelsWidth=150;
-	final SimpleTextField fle=new SimpleTextField();
+	final SimpleStringField fle=new SimpleStringField();
 	final SimplePasswordField psw=new SimplePasswordField();
 	final SimpleNumberField nu=new SimpleNumberField();
 	final Numeric num=new Numeric().value(20);
@@ -75,7 +75,7 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    .component(fle
-			.text(num.asNote())
+			.string(num.asNote())
 			)
 		    .width(layoutless.width().minus(labelsWidth).minus(16).minus(50))
 		    .height(22)
@@ -148,12 +148,18 @@ public class Example extends JFrame {
 		    .x(labelsWidth+8)
 		    .y(8+25*6)
 		    )
-		.item(new ComponentBox()
+		/*.item(new ComponentBox()
 		    .component(new SimpleTable()
 			.column(new TableColumn().title("First"))
 			.column(new TableColumn().title("Second"))
 			)
-		//new SimpleList().bind(list, nm.is().append(", ").append(mail.is())).selection(sel))
+		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .height(120)
+		    .x(labelsWidth+8)
+		    .y(8+25*7)
+		    )*/
+		.item(new ComponentBox()
+		    .component(new SimpleTextField())
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(120)
 		    .x(labelsWidth+8)

@@ -73,7 +73,7 @@ public class SimpleSelector extends JComboBox {
     }
     public SimpleSelector bind(View v, Note c) {
 	column = c;
-	view = v.select(new Toggle().value(true)).afterRefresh(new Task() {
+	view = v.select(new Toggle().value(true)).afterChange(new Task() {
 	    @Override public void doTask() {
 		requery();
 	    }
