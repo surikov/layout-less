@@ -17,6 +17,9 @@ public class Layoutless extends JLayeredPane implements ComponentListener {
 	this.setOpaque(false);
 	this.addComponentListener(this);
     }
+    public static String getVersion() {
+	return "1.5.2";
+    }
     @Override public void componentResized(ComponentEvent e) {
 	width.value(getSize().width);
 	height.value(getSize().height);
