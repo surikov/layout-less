@@ -17,6 +17,11 @@ import tee.binding.view.*;
 public class Example extends JFrame {
     private Layoutless layoutless;
     public static void main(String[] args) {
+	try {
+	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	} catch (Throwable e) {
+	    e.printStackTrace();
+	}
 	JFrame frame = new Example();
 	frame.setVisible(true);
     }
@@ -36,6 +41,7 @@ public class Example extends JFrame {
 	final SimplePasswordField psw=new SimplePasswordField();
 	final SimpleNumberField nu=new SimpleNumberField();
 	final Numeric num=new Numeric().value(20);
+	Note bigTxt=new Note().value("Type here...\n");
 
 	ColumnNote nm = new ColumnNote();
 	ColumnNumeric age = new ColumnNumeric();
@@ -148,7 +154,14 @@ public class Example extends JFrame {
 		    .x(labelsWidth+8)
 		    .y(8+25*6)
 		    )
-		/*.item(new ComponentBox()
+		.item(new ComponentBox()
+		    .component(new SimpleTextField().text(bigTxt))
+		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .height(120)
+		    .x(labelsWidth+8)
+		    .y(8+25*7)
+		    )
+		.item(new ComponentBox()
 		    .component(new SimpleTable()
 			.column(new TableColumn().title("First"))
 			.column(new TableColumn().title("Second"))
@@ -156,14 +169,7 @@ public class Example extends JFrame {
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(120)
 		    .x(labelsWidth+8)
-		    .y(8+25*7)
-		    )*/
-		.item(new ComponentBox()
-		    .component(new SimpleTextField())
-		    .width(layoutless.width().minus(labelsWidth).minus(16))
-		    .height(120)
-		    .x(labelsWidth+8)
-		    .y(8+25*7)
+		    .y(8+25*7+120+4)
 		    )
 		.item(new ComponentBox()
 		    .component(new SimpleButton()
@@ -192,7 +198,7 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    .component(new SimpleWait().horizontal(false))
-		    .width(8)
+		    .width(16)
 		    .height(100)
 		    .x(8)
 		    .y(8)
