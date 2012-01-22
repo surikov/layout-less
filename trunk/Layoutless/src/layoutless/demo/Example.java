@@ -61,10 +61,10 @@ public class Example extends JFrame {
 		;
 	View list=addrBook.select(age.is().more(20)).sort(nm.ascending());
 	final Numeric sel=new Numeric();
-	//final Note curMail=mail.at(list.row(sel));
+	final Note curMail=mail.at(list.row(sel));
 	sel.value(1).afterChange(new Task(){
 	    @Override public void doTask() {
-		//System.out.println("sel: "+sel.value()+", curMail: "+curMail.value());
+		System.out.println("sel: "+sel.value()+", curMail: "+curMail.value());
 	    }
 	});
 
@@ -157,11 +157,11 @@ public class Example extends JFrame {
 		.item(new ComponentBox()
 		    .component(new SimpleTextField().text(bigTxt))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
-		    .height(120)
+		    .height(70)
 		    .x(labelsWidth+8)
 		    .y(8+25*7)
 		    )
-		.item(new ComponentBox()
+		/*.item(new ComponentBox()
 		    .component(new SimpleTable()
 			.column(new TableColumn().title("First"))
 			.column(new TableColumn().title("Second"))
@@ -169,7 +169,14 @@ public class Example extends JFrame {
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(120)
 		    .x(labelsWidth+8)
-		    .y(8+25*7+120+4)
+		    .y(8+25*7+70+4)
+		    )*/
+		.item(new ComponentBox()
+		    .component(new SimpleList().bind(list, nm.is()).selection(sel))
+		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .height(120)
+		    .x(labelsWidth+8)
+		    .y(8+25*7+70+4)
 		    )
 		.item(new ComponentBox()
 		    .component(new SimpleButton()
