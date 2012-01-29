@@ -75,7 +75,7 @@ public class SimpleNumericSlider extends JSlider {
 	if (minimum == null || maximum == null) {
 	    return;
 	}
-	if (minimum.value() + 1 < maximum.value()) {
+	if (minimum.value() + 1.0 <= maximum.value()) {
 	    this.setMinimum(minimum.value().intValue());
 	    this.setMaximum(maximum.value().intValue());
 	    int sz = Math.abs(this.getMaximum() - this.getMinimum());
