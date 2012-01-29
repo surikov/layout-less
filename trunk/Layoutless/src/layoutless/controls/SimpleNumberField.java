@@ -26,13 +26,13 @@ public class SimpleNumberField extends JSpinner {
 	me = this;
 	lock = false;
 	model = new SpinnerNumberModel();
-	minimum = new Numeric().value(-100.0).afterChange(new Task() {
+	minimum = new Numeric().value(Double.MIN_VALUE).afterChange(new Task() {
 
 	    @Override public void doTask() {
 		adjust();
 	    }
 	});
-	maximum = new Numeric().value(100.0).afterChange(new Task() {
+	maximum = new Numeric().value(Double.MAX_VALUE).afterChange(new Task() {
 
 	    @Override public void doTask() {
 		adjust();

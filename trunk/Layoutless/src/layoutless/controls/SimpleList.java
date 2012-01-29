@@ -73,7 +73,7 @@ public class SimpleList extends JScrollPane {
 	return this;
     }
 
-    private void requery() {
+    public void requery() {
 	//System.out.println("requery");
 	if (view != null && column != null) {
 	    model.removeAllElements();
