@@ -62,8 +62,9 @@ public class SimpleSelector extends JComboBox {
 	return this;
     }*/
     private void requery() {
-	//System.out.println("requery");
+
 	if (view != null && column != null) {
+	    //System.out.println("requery "+view.size()+"/"+column.size());
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
 		//view.move(i);
