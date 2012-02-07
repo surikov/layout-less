@@ -80,7 +80,7 @@ public class SimpleList extends JScrollPane {
     private void requery() {
 
 	if (view != null && column != null) {
-	    //System.out.println("requery");
+	    //System.out.println("requery "+view.size());
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
 		//view.move(i);
@@ -100,12 +100,12 @@ public class SimpleList extends JScrollPane {
 	 requery();
 	 }
 	 }); */
-	view = new Bundle().afterChange(new Task() {
+	view = new Bundle().bind(v).afterChange(new Task() {
 
 	    @Override public void doTask() {
 		requery();
 	    }
-	}).bind(v);
+	});
 	selection.bind(view.select());
 	//System.out.println("bind sel "+me.hashCode());
 	requery();
