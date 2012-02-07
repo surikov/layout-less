@@ -18,7 +18,7 @@ public class SimpleList extends JScrollPane {
     private DefaultListModel model;
     private SimpleList me;
     private JList list;
-    private Bag view;
+    private Bundle view;
     private These<String> column;
     private Numeric selection;
 
@@ -92,7 +92,7 @@ public class SimpleList extends JScrollPane {
 	}
     }
 
-    public SimpleList bind(Bag v, These<String> c) {
+    public SimpleList bind(Bundle v, These<String> c) {
 	column = c;
 	/* view = v.select(new Toggle().value(true)).afterChange(new Task() {
 
@@ -100,7 +100,7 @@ public class SimpleList extends JScrollPane {
 	 requery();
 	 }
 	 }); */
-	view = new Bag().afterChange(new Task() {
+	view = new Bundle().afterChange(new Task() {
 
 	    @Override public void doTask() {
 		requery();

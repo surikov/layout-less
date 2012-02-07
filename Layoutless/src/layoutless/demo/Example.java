@@ -60,11 +60,11 @@ public class Example extends JFrame {
 		.row(new Row().field(nm.is("Misha")).field(man.is(true)).field(age.is(23)).field(mail.is("mike@mail.ru")))//
 		.row(new Row().field(nm.is("Glasha")).field(man.is(false)).field(age.is(20)).field(mail.is("glasha@gmail.com")))//
 		;*/
-	These<String> fio = new These<String>();
-	Numerics age = new Numerics();
-	Notes mail = new Notes();
-	Toggles man = new Toggles();
-	Bag sh = new Bag()//
+	final These<String> fio = new These<String>();
+	final Numerics age = new Numerics();
+	final Notes mail = new Notes();
+	final Toggles man = new Toggles();
+	final Bundle sh = new Bundle()//
 		.series(new Series().field(fio.is("Vasya")).field(man.is(true)).field(age.is(19)).field(mail.is("vpupkin@mail.ru")))//
 		.series(new Series().field(fio.is("Petya")).field(man.is(true)).field(age.is(22)).field(mail.is("petrpetrov@gmail.com")))//
 		.series(new Series().field(fio.is("Sasha")).field(man.is(true)).field(age.is(20)).field(mail.is("alxndr@aol.com")))//
@@ -168,7 +168,7 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    //.component(new SimpleSelector().bind(list, nm.is()).selection(sel))
-		    .component(new SimpleSelector())
+		    .component(new SimpleSelector().bind(sh, fio))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(22)
 		    .x(labelsWidth+8)
@@ -208,10 +208,12 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    .component(new SimpleButton()
-			.text("jb1")
+			.text("Test")
 			.icon(new ImageIcon("ok.png"))
 			.task(new Task(){@Override public void doTask() {
-				System.out.println(nu.numeric().value());
+				System.out.println(sh.select().value());
+				//sh.series(new Series().field(fio.is("1Vasya")).field(man.is(true)).field(age.is(19)).field(mail.is("1vpupkin@mail.ru")));
+				//sh.drop(sh.select().value().intValue());
 				}
 			    })
 			.normalAlignment(true))

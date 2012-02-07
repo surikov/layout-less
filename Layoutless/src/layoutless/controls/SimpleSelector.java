@@ -4,7 +4,7 @@ import tee.binding.*;
 import tee.binding.view.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
-
+import tee.binding.these.*;
 import layoutless.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -14,8 +14,8 @@ public class SimpleSelector extends JComboBox {
     private DefaultComboBoxModel model;
     private SimpleSelector me;
     private //private Fit<Kind> fit;
-	    View view;
-    private Note column;
+	    Bundle view;
+    private These<String> column;
     private Numeric selection;
     public SimpleSelector() {
 	super();
@@ -46,7 +46,7 @@ public class SimpleSelector extends JComboBox {
 	    }
 	});
     }
-    public Numeric selection() {
+    /*public Numeric selection() {
 	return selection;
     }
     public SimpleSelector selection(Numeric it) {
@@ -60,24 +60,32 @@ public class SimpleSelector extends JComboBox {
     public SimpleSelector selection(int it) {
 	selection.value(it);
 	return this;
-    }
+    }*/
     private void requery() {
 	//System.out.println("requery");
 	if (view != null && column != null) {
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
-		view.move(i);
-		model.addElement(column.value());
+		//view.move(i);
+		//model.addElement(column.value());
+		model.addElement(column.at(i));
 	    }
 	}
     }
-    public SimpleSelector bind(View v, Note c) {
+    public SimpleSelector bind(Bundle v, These<String> c) {
 	column = c;
-	view = v.select(new Toggle().value(true)).afterChange(new Task() {
+	/*view = v.select(new Toggle().value(true)).afterChange(new Task() {
 	    @Override public void doTask() {
 		requery();
 	    }
-	});
+	});*/
+	view = new Bundle().afterChange(new Task() {
+
+	    @Override public void doTask() {
+		requery();
+	    }
+	}).bind(v);
+	selection.bind(view.select());
 	requery();
 	return this;
     }
