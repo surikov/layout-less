@@ -213,7 +213,7 @@ public class Example extends JFrame {
 			.task(new Task(){@Override public void doTask() {
 				System.out.println(sh.select().value());
 				//sh.series(new Series().field(fio.is("1Vasya")).field(man.is(true)).field(age.is(19)).field(mail.is("1vpupkin@mail.ru")));
-				sh.drop(sh.select().value().intValue());
+				//sh.drop(sh.select().value().intValue());
 				}
 			    })
 			.normalAlignment(true))
