@@ -12,6 +12,7 @@ import tee.binding.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
 import tee.binding.it.*;
+import tee.binding.these.*;
 import tee.binding.view.*;
 
 public class Example extends JFrame {
@@ -42,7 +43,7 @@ public class Example extends JFrame {
 	final SimpleNumberField nu=new SimpleNumberField();
 	final Numeric num=new Numeric().value(20);
 	Note bigTxt=new Note().value("Type here...\n");
-
+/*
 	ColumnNote nm = new ColumnNote();
 	ColumnNumeric age = new ColumnNumeric();
 	ColumnNote mail = new ColumnNote();
@@ -58,7 +59,25 @@ public class Example extends JFrame {
 		.row(new Row().field(nm.is("Vika")).field(man.is(false)).field(age.is(21)).field(mail.is("avictorya@gmail.com")))//
 		.row(new Row().field(nm.is("Misha")).field(man.is(true)).field(age.is(23)).field(mail.is("mike@mail.ru")))//
 		.row(new Row().field(nm.is("Glasha")).field(man.is(false)).field(age.is(20)).field(mail.is("glasha@gmail.com")))//
+		;*/
+	These<String> fio = new These<String>();
+	Numerics age = new Numerics();
+	Notes mail = new Notes();
+	Toggles man = new Toggles();
+	Bag sh = new Bag()//
+		.series(new Series().field(fio.is("Vasya")).field(man.is(true)).field(age.is(19)).field(mail.is("vpupkin@mail.ru")))//
+		.series(new Series().field(fio.is("Petya")).field(man.is(true)).field(age.is(22)).field(mail.is("petrpetrov@gmail.com")))//
+		.series(new Series().field(fio.is("Sasha")).field(man.is(true)).field(age.is(20)).field(mail.is("alxndr@aol.com")))//
+		.series(new Series().field(fio.is("Masha")).field(man.is(false)).field(age.is(21)).field(mail.is("masha@mail.ru")))//
+		.series(new Series().field(fio.is("Kolya")).field(man.is(true)).field(age.is(21)).field(mail.is("nikolay@gmail.com")))//
+		.series(new Series().field(fio.is("Vanya")).field(man.is(true)).field(age.is(22)).field(mail.is("ivan@mail.ru")))//
+		.series(new Series().field(fio.is("Olya")).field(man.is(false)).field(age.is(19)).field(mail.is("olga@aol.com")))//
+		.series(new Series().field(fio.is("Vika")).field(man.is(false)).field(age.is(21)).field(mail.is("avictorya@gmail.com")))//
+		.series(new Series().field(fio.is("Misha")).field(man.is(true)).field(age.is(21)).field(mail.is("mike@mail.ru")))//
+		.series(new Series().field(fio.is("Glasha")).field(man.is(false)).field(age.is(20)).field(mail.is("glasha@gmail.com")))//
 		;
+
+	/*
 	View list=addrBook.select(age.is().more(20)).sort(nm.ascending());
 	final Numeric sel=new Numeric();
 	final Note curMail=mail.at(list.row(sel));
@@ -67,7 +86,7 @@ public class Example extends JFrame {
 		System.out.println("sel: "+sel.value()+", curMail: "+curMail.value());
 	    }
 	});
-
+*/
 
 	layoutless
 		.item(new ComponentBox()
@@ -148,7 +167,8 @@ public class Example extends JFrame {
 		    .y(8+25*5)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleSelector().bind(list, nm.is()).selection(sel))
+		    //.component(new SimpleSelector().bind(list, nm.is()).selection(sel))
+		    .component(new SimpleSelector())
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(22)
 		    .x(labelsWidth+8)
@@ -172,11 +192,19 @@ public class Example extends JFrame {
 		    .y(8+25*7+70+4)
 		    )*/
 		.item(new ComponentBox()
-		    .component(new SimpleList().bind(list, nm.is()).selection(sel))
+		    //.component(new SimpleList().bind(list, nm.is()).selection(sel))
+		    .component(new SimpleList().bind(sh, fio))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(120)
 		    .x(labelsWidth+8)
 		    .y(8+25*7+70+4)
+		    )
+		.item(new ComponentBox()
+		    .component(new SimpleLabel().text(mail.is()))
+		    .width(layoutless.width().minus(labelsWidth).minus(16))
+		    .height(120)
+		    .x(labelsWidth+8)
+		    .y(8+25*7+70+4+130)
 		    )
 		.item(new ComponentBox()
 		    .component(new SimpleButton()

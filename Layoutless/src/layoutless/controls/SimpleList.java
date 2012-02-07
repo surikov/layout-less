@@ -3,6 +3,7 @@ package layoutless.controls;
 import java.awt.*;
 import java.awt.event.*;
 import tee.binding.*;
+import tee.binding.these.*;
 import tee.binding.view.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
@@ -17,8 +18,8 @@ public class SimpleList extends JScrollPane {
     private DefaultListModel model;
     private SimpleList me;
     private JList list;
-    private View view;
-    private Note column;
+    private Bag view;
+    private These<String> column;
     private Numeric selection;
 
     public SimpleList() {
@@ -40,6 +41,7 @@ public class SimpleList extends JScrollPane {
 		    int s = selection.value().intValue();
 		    if (s >= 0 && s < me.model.getSize()) {
 			list.setSelectedIndex(s);
+			//System.out.println("trig "+me.hashCode()+"/"+list.getSelectedIndex());
 		    }
 		}
 	    }
@@ -50,10 +52,12 @@ public class SimpleList extends JScrollPane {
 
 	    @Override public void valueChanged(ListSelectionEvent e) {
 		selection.value(list.getSelectedIndex());
+		//System.out.println("sel "+me.hashCode()+"/"+list.getSelectedIndex());
 	    }
 	});
+	//System.out.println("done");
     }
-
+/*
     public Numeric selection() {
 	return selection;
     }
@@ -72,26 +76,38 @@ public class SimpleList extends JScrollPane {
 	selection.value(it);
 	return this;
     }
+*/
+    private void requery() {
 
-    public void requery() {
-	//System.out.println("requery");
 	if (view != null && column != null) {
+	    //System.out.println("requery");
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
-		view.move(i);
-		model.addElement(column.value());
+		//view.move(i);
+		//model.addElement(column.is());
+		model.addElement(column.at(i));
+		//System.out.println(column.at(i));
 	    }
+	    //list.setSelectedIndex(2);
 	}
     }
 
-    public SimpleList bind(View v, Note c) {
+    public SimpleList bind(Bag v, These<String> c) {
 	column = c;
-	view = v.select(new Toggle().value(true)).afterChange(new Task() {
+	/* view = v.select(new Toggle().value(true)).afterChange(new Task() {
+
+	 @Override public void doTask() {
+	 requery();
+	 }
+	 }); */
+	view = new Bag().afterChange(new Task() {
 
 	    @Override public void doTask() {
 		requery();
 	    }
-	});
+	}).bind(v);
+	selection.bind(view.select());
+	//System.out.println("bind sel "+me.hashCode());
 	requery();
 	return this;
     }

@@ -19,6 +19,7 @@ public class SimpleLabel extends JLabel {
 		}
 	    }
 	});
+	this.setVerticalAlignment(this.TOP);
 	normalAlignment = new Toggle().value(true).afterChange(new Task() {
 	    @Override public void doTask() {
 		if (normalAlignment != null) {
