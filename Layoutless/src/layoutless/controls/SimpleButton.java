@@ -1,4 +1,5 @@
 package layoutless.controls;
+import java.awt.*;
 import java.awt.event.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
@@ -9,8 +10,21 @@ public class SimpleButton extends JButton {
     private Task task;
     private Toggle normalAlignment;
     private It<Icon> icon;
-    public SimpleButton() {
+    private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
+
+    }
+    public SimpleButton(Window win) {
 	super();
+	window=win;
+	window.addWindowListener(windowAdapter);
 	text = new Note().value("").afterChange(new Task() {
 	    @Override public void doTask() {
 		if (text != null) {

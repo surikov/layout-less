@@ -6,6 +6,7 @@ import tee.binding.it.*;
 import tee.binding.task.*;
 import layoutless.*;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class SimpleScrollBox extends JScrollPane {
@@ -13,8 +14,20 @@ public class SimpleScrollBox extends JScrollPane {
     private Layoutless layoutless;
     private Numeric width;
     private Numeric height;
+private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
 
-    public SimpleScrollBox() {
+    }
+    public SimpleScrollBox(Window win) {
+	window=win;
+	window.addWindowListener(windowAdapter);
 	this.setOpaque(false);
 	this.getViewport().setOpaque(false);
 	this.setBorder(null);

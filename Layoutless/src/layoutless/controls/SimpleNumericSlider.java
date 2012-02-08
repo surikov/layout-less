@@ -1,5 +1,7 @@
 package layoutless.controls;
 
+import java.awt.*;
+import java.awt.event.*;
 import tee.binding.*;
 import tee.binding.view.*;
 import tee.binding.it.*;
@@ -17,9 +19,21 @@ public class SimpleNumericSlider extends JSlider {
     private boolean lock;
     private Numeric minimum;
     private Numeric maximum;
+private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
 
-    public SimpleNumericSlider() {
+    }
+    public SimpleNumericSlider(Window win) {
 	super();
+	window=win;
+	window.addWindowListener(windowAdapter);
 	me = this;
 	this.setPaintLabels(true);
 	this.setPaintTicks(true);

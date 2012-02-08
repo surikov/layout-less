@@ -1,5 +1,7 @@
 package layoutless.controls;
 
+import java.awt.*;
+import java.awt.event.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
 import layoutless.*;
@@ -14,8 +16,21 @@ public class SimpleCheck extends JCheckBox {
     private SimpleCheck me;
     private boolean lock;
 private Note text;
-    public SimpleCheck() {
+private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
+
+    }
+    public SimpleCheck(Window win) {
 	super();
+	window=win;
+	window.addWindowListener(windowAdapter);
 	me = this;
 	lock = false;
 	this.setOpaque(false);

@@ -21,9 +21,21 @@ public class SimpleList extends JScrollPane {
     private Bundle view;
     private These<String> column;
     private Numeric selection;
+private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
 
-    public SimpleList() {
+    }
+    public SimpleList(Window win) {
 	super();
+	window=win;
+	window.addWindowListener(windowAdapter);
 	list = new JList();
 	//list.setOpaque(false);
 	//this.setOpaque(false);
@@ -111,5 +123,5 @@ public class SimpleList extends JScrollPane {
 	requery();
 	return this;
     }
-   
+
 }
