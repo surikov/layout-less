@@ -38,9 +38,9 @@ public class Example extends JFrame {
     private void initComponents() {
 	layoutless = new Layoutless();
 	int labelsWidth=150;
-	final SimpleStringField fle=new SimpleStringField();
-	final SimplePasswordField psw=new SimplePasswordField();
-	final SimpleNumberField nu=new SimpleNumberField();
+	final SimpleStringField fle=new SimpleStringField(this);
+	final SimplePasswordField psw=new SimplePasswordField(this);
+	final SimpleNumberField nu=new SimpleNumberField(this);
 	final Numeric num=new Numeric().value(20);
 	Note bigTxt=new Note().value("Type here...\n");
 /*
@@ -90,7 +90,7 @@ public class Example extends JFrame {
 
 	layoutless
 		.item(new ComponentBox()
-		    .component(new SimpleLabel()
+		    .component(new SimpleLabel(this)
 			.text("File")
 			.normalAlignment(false))
 		    .width(labelsWidth)
@@ -108,7 +108,7 @@ public class Example extends JFrame {
 		    .y(8+25*0)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleButton()
+		    .component(new SimpleButton(this)
 			.text("...")
 			.task(new Task(){@Override public void doTask() {
 				System.out.println("...");
@@ -121,7 +121,7 @@ public class Example extends JFrame {
 		    .y(8+25*0)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleLabel()
+		    .component(new SimpleLabel(this)
 			.text("Name")
 			.normalAlignment(false))
 		    .width(labelsWidth)
@@ -137,7 +137,7 @@ public class Example extends JFrame {
 		    .y(8+25*1)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleLabel()
+		    .component(new SimpleLabel(this)
 			.text("Password")
 			.normalAlignment(false))
 		    .width(labelsWidth)
@@ -153,14 +153,14 @@ public class Example extends JFrame {
 		    .y(8+25*2)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleNumericSlider().numeric(20))
+		    .component(new SimpleNumericSlider(this).numeric(20))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(50)
 		    .x(labelsWidth+8)
 		    .y(8+25*3)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleCheck().text("test check"))
+		    .component(new SimpleCheck(this).text("test check"))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(22)
 		    .x(labelsWidth+8)
@@ -168,14 +168,14 @@ public class Example extends JFrame {
 		    )
 		.item(new ComponentBox()
 		    //.component(new SimpleSelector().bind(list, nm.is()).selection(sel))
-		    .component(new SimpleSelector().bind(sh, fio))
+		    .component(new SimpleSelector(this).bind(sh, fio))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(22)
 		    .x(labelsWidth+8)
 		    .y(8+25*6)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleTextField().text(bigTxt))
+		    .component(new SimpleTextField(this).text(bigTxt))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(70)
 		    .x(labelsWidth+8)
@@ -193,21 +193,21 @@ public class Example extends JFrame {
 		    )*/
 		.item(new ComponentBox()
 		    //.component(new SimpleList().bind(list, nm.is()).selection(sel))
-		    .component(new SimpleList().bind(sh, fio))
+		    .component(new SimpleList(this).bind(sh, fio))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(120)
 		    .x(labelsWidth+8)
 		    .y(8+25*7+70+4)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleLabel().text(mail.is()))
+		    .component(new SimpleLabel(this).text(mail.is()))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(120)
 		    .x(labelsWidth+8)
 		    .y(8+25*7+70+4+130)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleButton()
+		    .component(new SimpleButton(this)
 			.text("Test")
 			.icon(new ImageIcon("ok.png"))
 			.task(new Task(){@Override public void doTask() {
@@ -234,7 +234,7 @@ public class Example extends JFrame {
 		    .height(200)*/
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleWait().horizontal(false))
+		    .component(new SimpleWait(this).horizontal(false))
 		    .width(16)
 		    .height(100)
 		    .x(8)

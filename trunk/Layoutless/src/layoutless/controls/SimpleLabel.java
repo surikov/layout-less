@@ -1,5 +1,7 @@
 package layoutless.controls;
 
+import java.awt.*;
+import java.awt.event.*;
 import tee.binding.*;
 import tee.binding.view.*;
 import tee.binding.it.*;
@@ -10,8 +12,21 @@ import javax.swing.*;
 public class SimpleLabel extends JLabel {
     private Note text;
     private Toggle normalAlignment;
-    public SimpleLabel() {
+    private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
+
+    }
+    public SimpleLabel(Window win) {
 	super();
+	window=win;
+	window.addWindowListener(windowAdapter);
 	text = new Note().value("").afterChange(new Task() {
 	    @Override public void doTask() {
 		if (text != null) {

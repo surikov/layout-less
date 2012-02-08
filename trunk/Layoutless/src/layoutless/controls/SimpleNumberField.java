@@ -1,5 +1,7 @@
 package layoutless.controls;
 
+import java.awt.*;
+import java.awt.event.*;
 import tee.binding.*;
 import tee.binding.view.*;
 import tee.binding.it.*;
@@ -20,9 +22,21 @@ public class SimpleNumberField extends JSpinner {
     private JSpinner.NumberEditor editor;
     private Numeric decimalPlaces;
     private DecimalFormat format;
+private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
 
-    public SimpleNumberField() {
+    }
+    public SimpleNumberField(Window win) {
 	super();
+	window=win;
+	window.addWindowListener(windowAdapter);
 	me = this;
 	lock = false;
 	model = new SpinnerNumberModel();

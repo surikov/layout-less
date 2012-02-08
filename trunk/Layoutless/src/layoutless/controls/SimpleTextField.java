@@ -1,5 +1,7 @@
 package layoutless.controls;
 
+import java.awt.*;
+import java.awt.event.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
 import layoutless.*;
@@ -12,9 +14,21 @@ public class SimpleTextField extends JScrollPane {
     private SimpleTextField me;
     private boolean lock;
     private JTextArea area = new JTextArea();
+private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
 
-    public SimpleTextField() {
+    }
+    public SimpleTextField(Window win) {
 	super();
+	window=win;
+	window.addWindowListener(windowAdapter);
 	me = this;
 	lock = false;
 	area.setFont(area.getFont().deriveFont(12f)); // will only change size to 12pt

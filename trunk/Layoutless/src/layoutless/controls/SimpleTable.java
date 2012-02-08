@@ -1,4 +1,5 @@
 package layoutless.controls;
+import java.awt.*;
 import java.awt.event.*;
 import tee.binding.*;
 import tee.binding.view.*;
@@ -18,8 +19,21 @@ public class SimpleTable extends JScrollPane {
     private View view;
     private Vector<TableColumn> columns;
     private Numeric selection;
-    public SimpleTable() {
+    private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
+
+    }
+    public SimpleTable(Window win) {
 	super();
+	window=win;
+	window.addWindowListener(windowAdapter);
 	columns = new Vector<TableColumn>();
 	this.setOpaque(false);
 	this.getViewport().setOpaque(false);

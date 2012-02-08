@@ -1,4 +1,6 @@
 package layoutless.controls;
+import java.awt.*;
+import java.awt.event.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
 import layoutless.*;
@@ -8,8 +10,21 @@ public class SimpleStringField extends JTextField {
     private Note string;
     private SimpleStringField me;
     private boolean lock;
-    public SimpleStringField() {
+    private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
+
+    }
+    public SimpleStringField(Window win) {
 	super();
+	window=win;
+	window.addWindowListener(windowAdapter);
 	me = this;
 	lock = false;
 	string = new Note().value("").afterChange(new Task() {

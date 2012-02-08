@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.text.*;
 import java.math.*;
+import java.awt.*;
 public class SimpleSelector extends JComboBox {
     private DefaultComboBoxModel model;
     private SimpleSelector me;
@@ -17,9 +18,22 @@ public class SimpleSelector extends JComboBox {
 	    Bundle view;
     private These<String> column;
     private Numeric selection;
-    public SimpleSelector() {
+    private Window window;
+    private WindowAdapter windowAdapter=new WindowAdapter(){
+	    public void windowClosed(WindowEvent e){
+		window.removeWindowListener(this);
+		//System.out.println(e+" / "+window.hashCode());
+		clear();
+		}
+	    };
+    private void clear(){
+
+    }
+    public SimpleSelector(Window win) {
 	super();
 	me = this;
+	window=win;
+	window.addWindowListener(windowAdapter);
 	selection = new Numeric().value(0).afterChange(new Task() {
 	    @Override public void doTask() {
 		if (selection != null) {
