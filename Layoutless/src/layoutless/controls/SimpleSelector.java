@@ -64,7 +64,7 @@ public class SimpleSelector extends JComboBox {
     }
 
     public SimpleSelector bind(Bundle v, These<String> c) {
-	column = c.afterChange(new Task(){
+	column = c.watch(new Task(){
 
 	    @Override
 	    public void doTask() {

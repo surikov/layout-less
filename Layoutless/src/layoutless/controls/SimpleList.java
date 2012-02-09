@@ -105,23 +105,24 @@ private Window window;
     }
 
     public SimpleList bind(Bundle v, These<String> c) {
-	column = c;
-	/* view = v.select(new Toggle().value(true)).afterChange(new Task() {
+        column = c.watch(new Task() {
 
-	 @Override public void doTask() {
-	 requery();
-	 }
-	 }); */
-	view = new Bundle().bind(v).afterChange(new Task() {
+            @Override
+            public void doTask() {
+                requery();
+            }
+        });
+        view = new Bundle().bind(v).afterChange(new Task() {
 
-	    @Override public void doTask() {
-		requery();
-	    }
-	});
-	selection.bind(view.select());
-	//System.out.println("bind sel "+me.hashCode());
-	requery();
-	return this;
+            @Override
+            public void doTask() {
+                requery();
+            }
+        });
+        selection.bind(view.select());
+        //System.out.println("bind sel "+me.hashCode());
+        requery();
+        return this;
     }
 
 }
