@@ -15,8 +15,16 @@ import tee.binding.it.*;
 import tee.binding.these.*;
 import tee.binding.view.*;
 
+/**
+ * 
+ * @author User
+ */
 public class Example extends JFrame {
     private Layoutless layoutless;
+    /**
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
 	try {
 	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -26,10 +34,17 @@ public class Example extends JFrame {
 	JFrame frame = new Example();
 	frame.setVisible(true);
     }
-     public static String getVersion() {
+    /**
+     * 
+     * @return
+     */
+    public static String getVersion() {
 	return "1.2.9";
     }
-    public Example() {
+     /**
+      * 
+      */
+     public Example() {
 	setLayout(new BorderLayout());
 	setSize(500, 600);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

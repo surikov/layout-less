@@ -9,6 +9,10 @@ import tee.binding.task.*;
 import layoutless.*;
 import javax.swing.*;
 
+/**
+ * 
+ * @author User
+ */
 public class SimpleLabel extends JLabel {
     private Note text;
     private Toggle normalAlignment;
@@ -23,6 +27,10 @@ public class SimpleLabel extends JLabel {
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleLabel(Window win) {
 	super();
 	window=win;
@@ -52,25 +60,53 @@ public class SimpleLabel extends JLabel {
 	    setHorizontalAlignment(SwingConstants.LEFT);
 	}
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleLabel text(String it) {
 	text.value(it);
 	return this;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleLabel text(Note it) {
 	text.bind(it);
 	return this;
     }
+    /**
+     * 
+     * @return
+     */
     public Note text() {
 	return text;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleLabel normalAlignment(boolean it) {
 	normalAlignment.value(it);
 	return this;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleLabel normalAlignment(Toggle it) {
 	normalAlignment.bind(it);
 	return this;
     }
+    /**
+     * 
+     * @return
+     */
     public Toggle normalAlignment() {
 	return normalAlignment;
     }

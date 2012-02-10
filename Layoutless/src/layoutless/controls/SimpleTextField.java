@@ -8,6 +8,10 @@ import layoutless.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+/**
+ * 
+ * @author User
+ */
 public class SimpleTextField extends JScrollPane {
 
     private Note text;
@@ -25,6 +29,10 @@ private Window window;
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleTextField(Window win) {
 	super();
 	window=win;
@@ -73,16 +81,30 @@ private Window window;
 	this.getViewport().add(area);
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleTextField text(String it) {
 	text.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleTextField text(Note it) {
 	text.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Note text() {
 	return text;
     }

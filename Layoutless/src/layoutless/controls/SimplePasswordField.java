@@ -10,6 +10,10 @@ import layoutless.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+/**
+ * 
+ * @author User
+ */
 public class SimplePasswordField extends JPasswordField {
 
     private Note text;
@@ -26,6 +30,10 @@ private Window window;
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimplePasswordField(Window win) {
 	super();
 	window=win;
@@ -72,16 +80,30 @@ private Window window;
 	});
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimplePasswordField text(String it) {
 	text.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimplePasswordField text(Note it) {
 	text.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Note text() {
 	return text;
     }

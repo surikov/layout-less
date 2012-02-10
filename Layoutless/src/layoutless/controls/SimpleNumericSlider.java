@@ -12,6 +12,10 @@ import javax.swing.event.*;
 import java.text.*;
 import java.math.*;
 
+/**
+ * 
+ * @author User
+ */
 public class SimpleNumericSlider extends JSlider {
 
     private Numeric numeric;
@@ -30,6 +34,10 @@ private Window window;
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleNumericSlider(Window win) {
 	super();
 	window=win;
@@ -98,59 +106,116 @@ private Window window;
 	}
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumericSlider numeric(double it) {
 	numeric.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumericSlider numeric(int it) {
 	numeric.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumericSlider numeric(Numeric it) {
 	numeric.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Numeric numeric() {
 	return numeric;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumericSlider minimum(double it) {
 	minimum.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumericSlider minimum(int it) {
 	minimum.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumericSlider minimum(Numeric it) {
 	minimum.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Numeric minimum() {
 	return minimum;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumericSlider maximum(double it) {
 	maximum.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumericSlider maximum(int it) {
 	maximum.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumericSlider maximum(Numeric it) {
 	maximum.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Numeric maximum() {
 	return maximum;
     }

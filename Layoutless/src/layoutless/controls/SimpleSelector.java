@@ -7,6 +7,10 @@ import tee.binding.these.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 
+ * @author User
+ */
 public class SimpleSelector extends JComboBox {
 
     private DefaultComboBoxModel model;
@@ -26,6 +30,10 @@ public class SimpleSelector extends JComboBox {
     private void clear() {
     }
 
+    /**
+     * 
+     * @param win
+     */
     public SimpleSelector(Window win) {
 	super();
 	me = this;
@@ -63,6 +71,12 @@ public class SimpleSelector extends JComboBox {
 	}
     }
 
+    /**
+     * 
+     * @param v
+     * @param c
+     * @return
+     */
     public SimpleSelector bind(Bundle v, These<String> c) {
 	column = c.watch(new Task(){
 

@@ -13,6 +13,10 @@ import javax.swing.event.*;
 import java.text.*;
 import java.math.*;
 
+/**
+ * 
+ * @author User
+ */
 public class SimpleList extends JScrollPane {
 
     private DefaultListModel model;
@@ -32,6 +36,10 @@ private Window window;
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleList(Window win) {
 	super();
 	window=win;
@@ -104,6 +112,12 @@ private Window window;
 	}
     }
 
+    /**
+     * 
+     * @param v
+     * @param c
+     * @return
+     */
     public SimpleList bind(Bundle v, These<String> c) {
         column = c.watch(new Task() {
 
