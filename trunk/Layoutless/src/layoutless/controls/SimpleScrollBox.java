@@ -9,6 +9,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * 
+ * @author User
+ */
 public class SimpleScrollBox extends JScrollPane {
 
     private Layoutless layoutless;
@@ -25,6 +29,10 @@ private Window window;
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleScrollBox(Window win) {
 	window=win;
 	window.addWindowListener(windowAdapter);
@@ -72,40 +80,79 @@ private Window window;
 	//this.repaint();
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleScrollBox item(ComponentBox it) {
 	this.layoutless.item(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     */
     public void drop(JComponent it) {
 	this.layoutless.drop(it);
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleScrollBox width(Numeric it) {
 	width.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleScrollBox height(Numeric it) {
 	height.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleScrollBox width(int it) {
 	width.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleScrollBox height(int it) {
 	height.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleScrollBox width(double it) {
 	width.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleScrollBox height(double it) {
 	height.value(it);
 	return this;

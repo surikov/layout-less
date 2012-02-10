@@ -10,6 +10,10 @@ import javax.swing.event.*;
 import java.text.*;
 import java.math.*;
 
+/**
+ * 
+ * @author User
+ */
 public class SimpleCheck extends JCheckBox {
 
     private Toggle toggle;
@@ -27,6 +31,10 @@ private Window window;
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleCheck(Window win) {
 	super();
 	window=win;
@@ -62,27 +70,55 @@ private Window window;
 	});
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleCheck toggle(boolean it) {
 	toggle.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleCheck toggle(Toggle it) {
 	toggle.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Toggle numeric() {
 	return toggle;
     }
-      public SimpleCheck text(String it) {
+    /**
+     * 
+     * @param it
+     * @return
+     */
+    public SimpleCheck text(String it) {
 	text.value(it);
 	return this;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleCheck text(Note it) {
 	text.bind(it);
 	return this;
     }
+    /**
+     * 
+     * @return
+     */
     public Note text() {
 	return text;
     }

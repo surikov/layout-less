@@ -5,6 +5,10 @@ import tee.binding.it.*;
 import tee.binding.task.*;
 import layoutless.*;
 import javax.swing.*;
+/**
+ * 
+ * @author User
+ */
 public class SimpleButton extends JButton {
     private Note text;
     private Task task;
@@ -21,6 +25,10 @@ public class SimpleButton extends JButton {
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleButton(Window win) {
 	super();
 	window=win;
@@ -68,43 +76,94 @@ public class SimpleButton extends JButton {
 	    }
 	});
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleButton text(String it) {
 	text.value(it);
 	return this;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleButton text(Note it) {
 	text.bind(it);
 	return this;
     }
+    /**
+     * 
+     * @return
+     */
     public Note text() {
 	return text;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleButton normalAlignment(boolean it) {
 	normalAlignment.value(it);
 	return this;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleButton normalAlignment(Toggle it) {
 	normalAlignment.bind(it);
 	return this;
     }
+    /**
+     * 
+     * @return
+     */
     public Toggle normalAlignment() {
 	return normalAlignment;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleButton icon(Icon it) {
 	icon.value(it);
 	return this;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleButton icon(It<Icon> it) {
 	icon.bind(it);
 	return this;
     }
+    /**
+     * 
+     * @return
+     */
     public It<Icon> icon() {
 	return icon;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleButton task(Task it) {
 	task = it;
 	return this;
     }
+    /**
+     * 
+     * @return
+     */
     public Task task() {
 	return task;
     }

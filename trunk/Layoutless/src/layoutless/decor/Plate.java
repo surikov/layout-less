@@ -8,10 +8,17 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * 
+ * @author User
+ */
 public class Plate extends JPanel {
 
     private It<Color> color;
 
+    /**
+     * 
+     */
     public Plate() {
 	super();
 	this.setOpaque(true);
@@ -28,16 +35,30 @@ public class Plate extends JPanel {
 	color(Color.orange);
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public Plate color(Color it) {
 	color.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public Plate color(It<Color> it) {
 	color.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public It<Color> color() {
 	return color;
     }

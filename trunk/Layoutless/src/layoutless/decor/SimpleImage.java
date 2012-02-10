@@ -7,12 +7,19 @@ import layoutless.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 
+ * @author User
+ */
 public class SimpleImage extends JComponent {
 
     private It<Image> image;
     private int iconWidth;
     private int iconHeight;
 
+    /**
+     * 
+     */
     public SimpleImage() {
 	super();
 	image = new It<Image>()//.afterChange(new Task() {
@@ -74,18 +81,32 @@ public class SimpleImage extends JComponent {
 	}
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleImage image(Image it) {
 	image.value(it);
 	readImageSize();
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleImage image(It<Image> it) {
 	image.bind(it);
 	readImageSize();
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public It<Image> image() {
 	return image;
     }

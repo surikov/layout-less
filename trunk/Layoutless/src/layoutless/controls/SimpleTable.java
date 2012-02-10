@@ -12,6 +12,10 @@ import javax.swing.table.*;
 import java.text.*;
 import java.math.*;
 import java.util.*;
+/**
+ * 
+ * @author User
+ */
 public class SimpleTable extends JScrollPane {
     DefaultTableColumnModel model;
     private SimpleTable me;
@@ -30,6 +34,10 @@ public class SimpleTable extends JScrollPane {
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleTable(Window win) {
 	super();
 	window=win;
@@ -54,6 +62,11 @@ public class SimpleTable extends JScrollPane {
 	table = new JTable(model);*/
 	this.getViewport().add(table);
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleTable column(TableColumn it) {
 	this.columns.add(it);
 	return this;

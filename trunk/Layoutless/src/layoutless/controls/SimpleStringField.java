@@ -6,6 +6,10 @@ import tee.binding.task.*;
 import layoutless.*;
 import javax.swing.*;
 import javax.swing.event.*;
+/**
+ * 
+ * @author User
+ */
 public class SimpleStringField extends JTextField {
     private Note string;
     private SimpleStringField me;
@@ -21,6 +25,10 @@ public class SimpleStringField extends JTextField {
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleStringField(Window win) {
 	super();
 	window=win;
@@ -62,14 +70,28 @@ public class SimpleStringField extends JTextField {
 	    }
 	});
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleStringField string(String it) {
 	string.value(it);
 	return this;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleStringField string(Note it) {
 	string.bind(it);
 	return this;
     }
+    /**
+     * 
+     * @return
+     */
     public Note string() {
 	return string;
     }

@@ -11,6 +11,10 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.text.*;
 import java.math.*;
+/**
+ * 
+ * @author User
+ */
 public class SimpleNumberField extends JSpinner {
 
     private Numeric numeric;
@@ -33,6 +37,10 @@ private Window window;
     private void clear(){
 
     }
+    /**
+     * 
+     * @param win
+     */
     public SimpleNumberField(Window win) {
 	super();
 	window=win;
@@ -152,78 +160,154 @@ private Window window;
 	    this.numeric.value(this.maximum.value());
 	}
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField numeric(double it) {
 	numeric.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField numeric(int it) {
 	numeric.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField numeric(Numeric it) {
 	numeric.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Numeric numeric() {
 	return numeric;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField minimum(double it) {
 	minimum.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField minimum(int it) {
 	minimum.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField minimum(Numeric it) {
 	minimum.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Numeric minimum() {
 	return minimum;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField maximum(double it) {
 	maximum.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField maximum(int it) {
 	maximum.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField maximum(Numeric it) {
 	maximum.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Numeric maximum() {
 	return maximum;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField decimalPlaces(double it) {
 	decimalPlaces.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField decimalPlaces(int it) {
 	decimalPlaces.value(it);
 	return this;
     }
 
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public SimpleNumberField decimalPlaces(Numeric it) {
 	decimalPlaces.bind(it);
 	return this;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Numeric decimalPlaces() {
 	return decimalPlaces;
     }

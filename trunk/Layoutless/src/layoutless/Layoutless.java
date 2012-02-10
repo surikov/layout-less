@@ -6,9 +6,16 @@ import tee.binding.it.*;
 import tee.binding.task.*;
 import java.awt.*;
 
+/**
+ * 
+ * @author User
+ */
 public class Layoutless extends JLayeredPane implements ComponentListener {
     private Numeric width;
     private Numeric height;
+    /**
+     * 
+     */
     public Layoutless() {
 	super();
 	this.add(new JInternalFrame());
@@ -17,6 +24,10 @@ public class Layoutless extends JLayeredPane implements ComponentListener {
 	this.setOpaque(false);
 	this.addComponentListener(this);
     }
+    /**
+     * 
+     * @return
+     */
     public static String getVersion() {
 	return "1.5.2";
     }
@@ -33,16 +44,33 @@ public class Layoutless extends JLayeredPane implements ComponentListener {
     @Override public void componentHidden(ComponentEvent e) {
 	//
     }
+    /**
+     * 
+     * @return
+     */
     public Numeric width() {
 	return width;
     }
+    /**
+     * 
+     * @return
+     */
     public Numeric height() {
 	return height;
     }
+    /**
+     * 
+     * @param it
+     * @return
+     */
     public Layoutless item(ComponentBox it) {
 	this.add(it);
 	return this;
     }
+    /**
+     * 
+     * @param it
+     */
     public void drop(JComponent it) {
 	for (int i = 0; i < this.getComponentCount(); i++) {
 	    Component c = this.getComponents()[i];
