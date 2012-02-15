@@ -80,16 +80,16 @@ public class Example extends JFrame {
 	final Notes mail = new Notes();
 	final Toggles man = new Toggles();
 	final Bundle sh = new Bundle()//
-		.series(new Series().field(fio.value("Vasya")).field(man.value(true)).field(age.value(19)).field(mail.value("vpupkin@mail.ru")))//
-		.series(new Series().field(fio.value("Petya")).field(man.value(true)).field(age.value(22)).field(mail.value("petrpetrov@gmail.com")))//
-		.series(new Series().field(fio.value("Sasha")).field(man.value(true)).field(age.value(20)).field(mail.value("alxndr@aol.com")))//
-		.series(new Series().field(fio.value("Masha")).field(man.value(false)).field(age.value(21)).field(mail.value("masha@mail.ru")))//
-		.series(new Series().field(fio.value("Kolya")).field(man.value(true)).field(age.value(21)).field(mail.value("nikolay@gmail.com")))//
-		.series(new Series().field(fio.value("Vanya")).field(man.value(true)).field(age.value(22)).field(mail.value("ivan@mail.ru")))//
-		.series(new Series().field(fio.value("Olya")).field(man.value(false)).field(age.value(19)).field(mail.value("olga@aol.com")))//
-		.series(new Series().field(fio.value("Vika")).field(man.value(false)).field(age.value(21)).field(mail.value("avictorya@gmail.com")))//
-		.series(new Series().field(fio.value("Misha")).field(man.value(true)).field(age.value(21)).field(mail.value("mike@mail.ru")))//
-		.series(new Series().field(fio.value("Glasha")).field(man.value(false)).field(age.value(20)).field(mail.value("glasha@gmail.com")))//
+		.series(new Series().field(fio.is("Vasya")).field(man.is(true)).field(age.is(19)).field(mail.is("vpupkin@mail.ru")))//
+		.series(new Series().field(fio.is("Petya")).field(man.is(true)).field(age.is(22)).field(mail.is("petrpetrov@gmail.com")))//
+		.series(new Series().field(fio.is("Sasha")).field(man.is(true)).field(age.is(20)).field(mail.is("alxndr@aol.com")))//
+		.series(new Series().field(fio.is("Masha")).field(man.is(false)).field(age.is(21)).field(mail.is("masha@mail.ru")))//
+		.series(new Series().field(fio.is("Kolya")).field(man.is(true)).field(age.is(21)).field(mail.is("nikolay@gmail.com")))//
+		.series(new Series().field(fio.is("Vanya")).field(man.is(true)).field(age.is(22)).field(mail.is("ivan@mail.ru")))//
+		.series(new Series().field(fio.is("Olya")).field(man.is(false)).field(age.is(19)).field(mail.is("olga@aol.com")))//
+		.series(new Series().field(fio.is("Vika")).field(man.is(false)).field(age.is(21)).field(mail.is("avictorya@gmail.com")))//
+		.series(new Series().field(fio.is("Misha")).field(man.is(true)).field(age.is(21)).field(mail.is("mike@mail.ru")))//
+		.series(new Series().field(fio.is("Glasha")).field(man.is(false)).field(age.is(20)).field(mail.is("glasha@gmail.com")))//
 		;
 
 	/*
@@ -215,7 +215,7 @@ public class Example extends JFrame {
 		    .y(8+25*7+70+4)
 		    )
 		.item(new ComponentBox()
-		    .component(new SimpleLabel(this).text(mail.value()))
+		    .component(new SimpleLabel(this).text(mail.current()))
 		    .width(layoutless.width().minus(labelsWidth).minus(16))
 		    .height(120)
 		    .x(labelsWidth+8)
