@@ -105,7 +105,8 @@ private Window window;
 	    for (int i = 0; i < view.size(); i++) {
 		//view.move(i);
 		//model.addElement(column.is());
-		model.addElement(column.at(i));
+                view.probe(i);
+		model.addElement(column.is().value());
 		//System.out.println(column.at(i));
 	    }
 	    //list.setSelectedIndex(2);

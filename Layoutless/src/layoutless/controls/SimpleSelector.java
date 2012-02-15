@@ -66,7 +66,8 @@ public class SimpleSelector extends JComboBox {
 	if (view != null && column != null) {
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
-		model.addElement(column.at(i));
+                view.probe(i);
+		model.addElement(column.is().value());
 	    }
 	}
     }
