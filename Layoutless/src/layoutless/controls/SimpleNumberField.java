@@ -3,7 +3,7 @@ package layoutless.controls;
 import java.awt.*;
 import java.awt.event.*;
 import tee.binding.*;
-import tee.binding.view.*;
+//import tee.binding.view.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
 import layoutless.*;

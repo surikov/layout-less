@@ -2,7 +2,7 @@ package layoutless.controls;
 import java.awt.*;
 import java.awt.event.*;
 import tee.binding.*;
-import tee.binding.view.*;
+//import tee.binding.view.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
 import layoutless.*;
@@ -20,7 +20,7 @@ public class SimpleTable extends JScrollPane {
     DefaultTableColumnModel model;
     private SimpleTable me;
     private JTable table;
-    private View view;
+    //private View view;
     private Vector<TableColumn> columns;
     private Numeric selection;
     private Window window;
