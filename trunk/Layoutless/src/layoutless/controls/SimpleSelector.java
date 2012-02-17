@@ -56,6 +56,7 @@ public class SimpleSelector extends JComboBox {
 
 	    @Override public void itemStateChanged(ItemEvent e) {
 		if (e.getStateChange() == e.SELECTED) {
+                    //System.out.println("changed "+me.getSelectedIndex());
 		    selection.value(me.getSelectedIndex());
 		}
 	    }
@@ -64,11 +65,13 @@ public class SimpleSelector extends JComboBox {
 
     private void requery() {
 	if (view != null && column != null) {
+            int n=selection.value().intValue();
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
                 view.probe(i);
 		model.addElement(column.is().value());
 	    }
+            selection.value(n);
 	}
     }
 
@@ -93,7 +96,9 @@ public class SimpleSelector extends JComboBox {
 	    }
 	}).bind(v);
 	selection.bind(view.select());
+        //System.out.println("view.select() "+view.select().value());
 	requery();
+        //System.out.println("view.select() "+view.select().value());
 	return this;
     }
 }

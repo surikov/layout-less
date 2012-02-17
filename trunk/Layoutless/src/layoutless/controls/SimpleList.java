@@ -135,7 +135,7 @@ private Window window;
             }
         });
         selection.bind(view.select());
-        //System.out.println("bind sel "+me.hashCode());
+        //System.out.println("view.select() "+view.select().value());
         requery();
         return this;
     }
