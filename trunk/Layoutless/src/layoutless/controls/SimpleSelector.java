@@ -12,24 +12,21 @@ import java.awt.*;
  * @author User
  */
 public class SimpleSelector extends JComboBox {
-
     private DefaultComboBoxModel model;
     private SimpleSelector me;
     private Bundle view;
     private These<String> column;
     private Numeric selection;
     private Window window;
+    boolean lockSelect = false;
     private WindowAdapter windowAdapter = new WindowAdapter() {
-
 	public void windowClosed(WindowEvent e) {
 	    window.removeWindowListener(this);
 	    clear();
 	}
     };
-
     private void clear() {
     }
-
     /**
      * 
      * @param win
@@ -40,7 +37,6 @@ public class SimpleSelector extends JComboBox {
 	window = win;
 	window.addWindowListener(windowAdapter);
 	selection = new Numeric().value(0).afterChange(new Task() {
-
 	    @Override public void doTask() {
 		if (selection != null) {
 		    int s = selection.value().intValue();
@@ -53,28 +49,30 @@ public class SimpleSelector extends JComboBox {
 	model = new DefaultComboBoxModel();
 	this.setModel(model);
 	addItemListener(new ItemListener() {
-
 	    @Override public void itemStateChanged(ItemEvent e) {
+		if (lockSelect) {
+		    return;
+		}
 		if (e.getStateChange() == e.SELECTED) {
-                    //System.out.println("changed "+me.getSelectedIndex());
+		    //System.out.println("changed "+me.getSelectedIndex());
 		    selection.value(me.getSelectedIndex());
 		}
 	    }
 	});
     }
-
     private void requery() {
 	if (view != null && column != null) {
-            int n=selection.value().intValue();
+	    //int n=selection.value().intValue();
+	    lockSelect = true;
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
-                view.probe(i);
+		view.probe(i);
 		model.addElement(column.is().value());
 	    }
-            selection.value(n);
+	    //selection.value(n);
+	    lockSelect = false;
 	}
     }
-
     /**
      * 
      * @param v
@@ -82,23 +80,22 @@ public class SimpleSelector extends JComboBox {
      * @return
      */
     public SimpleSelector bind(Bundle v, These<String> c) {
-	column = c.watch(new Task(){
-
+	column = c.watch(new Task() {
 	    @Override
 	    public void doTask() {
 		System.out.println("sfgb");
 	    }
 	});
 	view = new Bundle().afterChange(new Task() {
-
 	    @Override public void doTask() {
 		requery();
 	    }
 	}).bind(v);
-	selection.bind(view.select());
-        //System.out.println("view.select() "+view.select().value());
+	
+	//System.out.println("view.select() "+view.select().value());
 	requery();
-        //System.out.println("view.select() "+view.select().value());
+	//System.out.println("view.select() "+view.select().value());
+	selection.bind(view.select());
 	return this;
     }
 }
