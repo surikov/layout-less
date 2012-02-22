@@ -5,8 +5,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import layoutless.ComponentBox;
-import layoutless.Layoutless;
+import layoutless.*;
+import layoutless.decor.*;
+import layoutless.decor.figures.*;
 import layoutless.controls.*;
 import tee.binding.*;
 import tee.binding.it.*;
@@ -210,6 +211,14 @@ public class Example extends JFrame {
 		    .height(100)
 		    .x(labelsWidth+8)
 		    .y(8+25*7+70+4+130+20+8)
+		    )
+                .item(new ComponentBox().component(new Whiteboard(this)
+                        .figure(new Streak())
+                        )
+		    .width(140)
+		    .height(layoutless.height().minus(130))
+		    .x(8)
+		    .y(120)
 		    )
 		.item(new ComponentBox().component(new SimpleButton(this)
 			.text("Test")

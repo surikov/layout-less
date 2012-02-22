@@ -15,12 +15,13 @@ import javax.swing.*;
 public class Plate extends JPanel {
 
     private It<Color> color;
-
+private Window window;
     /**
      * 
      */
-    public Plate() {
+    public Plate(Window win) {
 	super();
+        window=win;
 	this.setOpaque(true);
 	color = new It<Color>().afterChange(new Task() {
 
