@@ -19,14 +19,16 @@ import java.math.*;
  */
 public class SimpleList extends JScrollPane {
     private DefaultListModel model;
-    private SimpleList me;
+    //private SimpleList me;
     private JList list;
     private Bundle view;
     private These<String> column;
     private Numeric selection;
     private Window window;
+    private Task action;
     boolean lockSelect = false;
     private WindowAdapter windowAdapter = new WindowAdapter() {
+	@Override
 	public void windowClosed(WindowEvent e) {
 	    window.removeWindowListener(this);
 	    //System.out.println(e+" / "+window.hashCode());
@@ -34,6 +36,14 @@ public class SimpleList extends JScrollPane {
 	}
     };
     private void clear() {
+    }
+    public SimpleList task(Task a) {
+	//System.out.println("task " );
+	action = a;
+	return this;
+    }
+    public Task task() {
+	return action;
     }
     /**
      * 
@@ -50,14 +60,14 @@ public class SimpleList extends JScrollPane {
 	//list.setBackground(Color.red);
 	//this.getViewport().setBackground(Color.blue);
 	//this.setBackground(Color.green);
-
+//System.out.println("list ");
 	this.getViewport().add(list);
-	me = this;
+	//me = this;
 	selection = new Numeric().value(0).afterChange(new Task() {
 	    @Override public void doTask() {
 		if (selection != null) {
 		    int s = selection.value().intValue();
-		    if (s >= 0 && s < me.model.getSize()) {
+		    if (s >= 0 && s < model.getSize()) {
 			list.setSelectedIndex(s);
 			//System.out.println("trig "+me.hashCode()+"/"+list.getSelectedIndex());
 		    }
@@ -76,6 +86,20 @@ public class SimpleList extends JScrollPane {
 	    }
 	});
 	//System.out.println("done");
+	list.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mouseClicked(MouseEvent e) {
+		if (e.getClickCount() == 2) {
+		    //int index = list.locationToIndex(e.getPoint());
+		    //System.out.println("Double clicked on Item " + selection.value()+"/"+action);
+		    if (selection.value() >= 0 && selection.value() < model.getSize()) {
+			if (action != null) {
+			    action.start();
+			}
+		    }
+		}
+	    }
+	});
     }
     /*
     public Numeric selection() {
@@ -120,6 +144,7 @@ public class SimpleList extends JScrollPane {
      * @return
      */
     public SimpleList bind(Bundle v, These<String> c) {
+	//System.out.println("bind ");
 	column = c.watch(new Task() {
 	    @Override
 	    public void doTask() {
