@@ -1,7 +1,7 @@
 package layoutless.controls;
 
 import java.awt.event.*;
-import tee.binding.it.*;
+import tee.binding.properties.*;
 import tee.binding.task.*;
 import tee.binding.these.*;
 import javax.swing.*;
@@ -16,7 +16,7 @@ public class SimpleSelector extends JComboBox {
     private SimpleSelector me;
     private Bundle view;
     private These<String> column;
-    private Numeric selection;
+    public NumericProperty<SimpleSelector> selection;
     private Window window;
     boolean lockSelect = false;
     private WindowAdapter windowAdapter = new WindowAdapter() {
@@ -36,40 +36,38 @@ public class SimpleSelector extends JComboBox {
 	me = this;
 	window = win;
 	window.addWindowListener(windowAdapter);
-	selection = new Numeric().value(0).afterChange(new Task() {
+	model = new DefaultComboBoxModel();
+	this.setModel(model);
+	selection = new NumericProperty<SimpleSelector>(this);
+	selection.property.value(0).afterChange(new Task() {
 	    @Override public void doTask() {
 		if (selection != null) {
-		    int s = selection.value().intValue();
+		    int s = selection.property.value().intValue();
 		    if (s >= 0 && s < me.model.getSize()) {
 			me.setSelectedIndex(s);
 		    }
 		}
 	    }
-	});
-	model = new DefaultComboBoxModel();
-	this.setModel(model);
+	});	
 	addItemListener(new ItemListener() {
 	    @Override public void itemStateChanged(ItemEvent e) {
 		if (lockSelect) {
 		    return;
 		}
 		if (e.getStateChange() == e.SELECTED) {
-		    //System.out.println("changed "+me.getSelectedIndex());
-		    selection.value(me.getSelectedIndex());
+		    selection.property.value(me.getSelectedIndex());
 		}
 	    }
 	});
     }
     private void requery() {
 	if (view != null && column != null) {
-	    //int n=selection.value().intValue();
 	    lockSelect = true;
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
 		view.probe(i);
 		model.addElement(column.is().value());
 	    }
-	    //selection.value(n);
 	    lockSelect = false;
 	}
     }
@@ -83,7 +81,7 @@ public class SimpleSelector extends JComboBox {
 	column = c.watch(new Task() {
 	    @Override
 	    public void doTask() {
-		System.out.println("sfgb");
+		//System.out.println("sfgb");
 	    }
 	});
 	view = new Bundle().afterChange(new Task() {
@@ -91,11 +89,8 @@ public class SimpleSelector extends JComboBox {
 		requery();
 	    }
 	}).bind(v);
-	
-	//System.out.println("view.select() "+view.select().value());
 	requery();
-	//System.out.println("view.select() "+view.select().value());
-	selection.bind(view.select());
+	selection.property.bind(view.select());
 	return this;
     }
 }
