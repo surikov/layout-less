@@ -2,7 +2,7 @@ package layoutless.controls;
 import java.awt.*;
 import java.awt.event.*;
 import tee.binding.*;
-//import tee.binding.view.*;
+import tee.binding.properties.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
 import layoutless.*;
@@ -22,7 +22,7 @@ public class SimpleTable extends JScrollPane {
     private JTable table;
     //private View view;
     private Vector<TableColumn> columns;
-    private Numeric selection;
+    private NumericProperty<SimpleTable> selection;
     private Window window;
     private WindowAdapter windowAdapter=new WindowAdapter(){
 	    public void windowClosed(WindowEvent e){

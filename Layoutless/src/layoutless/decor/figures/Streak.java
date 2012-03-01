@@ -1,35 +1,37 @@
 package layoutless.decor.figures;
 
 import layoutless.decor.*;
-
-import java.awt.event.*;
-import tee.binding.it.*;
-import tee.binding.task.*;
-import layoutless.*;
-import javax.swing.*;
+import tee.binding.properties.*;
 import java.awt.*;
-import javax.swing.*;
 import java.awt.geom.*;
 
 public class Streak extends Figure {
-
-    private Numeric startX;
-
+    public NumericProperty<Streak> startX;
+    public NumericProperty<Streak> startY;
+    public NumericProperty<Streak> endX;
+    public NumericProperty<Streak> endY;
+    public NumericProperty<Streak> width;
+    public NumericProperty<Streak> color;
     public Streak() {
-        startX = new Numeric().value(0);
+	startX = new NumericProperty<Streak>(this);
+	startX.property.value(0);
+	startY = new NumericProperty<Streak>(this);
+	startY.property.value(0);
+	endX = new NumericProperty<Streak>(this);
+	endX.property.value(0);
+	endY = new NumericProperty<Streak>(this);
+	endY.property.value(0);
+	width = new NumericProperty<Streak>(this);
+	width.property.value(3);
+	color = new NumericProperty<Streak>(this);
+	color.property.value(0xffcc9966);
     }
-
     @Override
     public void paint(Graphics2D g2) {
-        float width = 17.0f;
-        int cap = BasicStroke.CAP_ROUND;
-        int join = BasicStroke.JOIN_ROUND;
-        g2.setStroke(new BasicStroke(width, cap, join));
-        g2.setPaint(Color.red);
-        g2.draw(new Line2D.Double(0, 0, 130, 250));
-    }
-
-    public Streak startX() {
-        return this;
+	int cap = BasicStroke.CAP_ROUND;
+	int join = BasicStroke.JOIN_ROUND;
+	g2.setStroke(new BasicStroke(width.property.value().intValue(), cap, join));
+	g2.setPaint(new Color(color.property.value().intValue(), true));
+	g2.draw(new Line2D.Double(startX.property.value(), startY.property.value(), endX.property.value(), endY.property.value()));
     }
 }

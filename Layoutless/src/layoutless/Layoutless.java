@@ -2,8 +2,7 @@ package layoutless;
 
 import javax.swing.*;
 import java.awt.event.*;
-import tee.binding.it.*;
-import tee.binding.task.*;
+import tee.binding.properties.*;
 import java.awt.*;
 
 /**
@@ -11,16 +10,18 @@ import java.awt.*;
  * @author User
  */
 public class Layoutless extends JLayeredPane implements ComponentListener {
-    private Numeric width;
-    private Numeric height;
+    public NumericProperty<Layoutless> width;
+    public NumericProperty<Layoutless> height;
     /**
      * 
      */
     public Layoutless() {
 	super();
 	this.add(new JInternalFrame());
-	width = new Numeric().value(100);
-	height = new Numeric().value(100);
+	width = new NumericProperty<Layoutless>(this);
+	width.property.value(100);
+	height = new NumericProperty<Layoutless>(this);
+	height.property.value(100);
 	this.setOpaque(false);
 	this.addComponentListener(this);
     }
@@ -32,8 +33,8 @@ public class Layoutless extends JLayeredPane implements ComponentListener {
 	return "1.5.2";
     }
     @Override public void componentResized(ComponentEvent e) {
-	width.value(getSize().width);
-	height.value(getSize().height);
+	width.property.value(getSize().width);
+	height.property.value(getSize().height);
     }
     @Override public void componentMoved(ComponentEvent e) {
 	//
@@ -43,20 +44,6 @@ public class Layoutless extends JLayeredPane implements ComponentListener {
     }
     @Override public void componentHidden(ComponentEvent e) {
 	//
-    }
-    /**
-     * 
-     * @return
-     */
-    public Numeric width() {
-	return width;
-    }
-    /**
-     * 
-     * @return
-     */
-    public Numeric height() {
-	return height;
     }
     /**
      * 
