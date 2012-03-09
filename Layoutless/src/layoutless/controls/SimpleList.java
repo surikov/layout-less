@@ -3,6 +3,7 @@ package layoutless.controls;
 import java.awt.*;
 import java.awt.event.*;
 import tee.binding.these.*;
+import tee.binding.it.*;
 import tee.binding.task.*;
 import tee.binding.properties.*;
 import javax.swing.*;
@@ -16,7 +17,8 @@ public class SimpleList extends JScrollPane {
     private DefaultListModel model;
     private JList list;
     private Bundle view;
-    private These<String> column;
+    //private These<String> column;
+    private Note cell;
     public NumericProperty<SimpleList> selection;
     private Window window;
     public TaskProperty<SimpleList> task;
@@ -34,8 +36,9 @@ public class SimpleList extends JScrollPane {
      * 
      * @param win
      */
-    public SimpleList(Window win) {
+    public SimpleList(Window win,Bundle v, It<String> c) {
 	super();
+	cell=new Note().value("");
 	window = win;
 	window.addWindowListener(windowAdapter);
 	list = new JList();
@@ -76,14 +79,15 @@ public class SimpleList extends JScrollPane {
 		}
 	    }
 	});
+	bind(v,c);
     }
     private void requery() {
 	lockSelect = true;
-	if (view != null && column != null) {
+	if (view != null && cell != null) {
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
 		view.probe(i);
-		model.addElement(column.is().value());
+		model.addElement(cell.value());
 	    }
 	}
 	lockSelect = false;
@@ -94,13 +98,14 @@ public class SimpleList extends JScrollPane {
      * @param c
      * @return
      */
-    public SimpleList bind(Bundle v, These<String> c) {
-	column = c.watch(new Task() {
+    private SimpleList bind(Bundle v, It<String> c) {
+	/*column = c.watch(new Task() {
 	    @Override
 	    public void doTask() {
 		requery();
 	    }
-	});
+	});*/
+	cell.bind(c);
 	view = new Bundle().bind(v).afterChange(new Task() {
 	    @Override
 	    public void doTask() {

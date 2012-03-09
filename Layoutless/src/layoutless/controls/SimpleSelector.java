@@ -2,6 +2,7 @@ package layoutless.controls;
 
 import java.awt.event.*;
 import tee.binding.properties.*;
+import tee.binding.it.*;
 import tee.binding.task.*;
 import tee.binding.these.*;
 import javax.swing.*;
@@ -15,7 +16,8 @@ public class SimpleSelector extends JComboBox {
     private DefaultComboBoxModel model;
     private SimpleSelector me;
     private Bundle view;
-    private These<String> column;
+    //private These<String> column;
+    private Note cell;
     public NumericProperty<SimpleSelector> selection;
     private Window window;
     boolean lockSelect = false;
@@ -31,10 +33,11 @@ public class SimpleSelector extends JComboBox {
      * 
      * @param win
      */
-    public SimpleSelector(Window win) {
+    public SimpleSelector(Window win,Bundle v, It<String> c) {
 	super();
 	me = this;
 	window = win;
+	cell=new Note().value("");
 	window.addWindowListener(windowAdapter);
 	model = new DefaultComboBoxModel();
 	this.setModel(model);
@@ -59,14 +62,15 @@ public class SimpleSelector extends JComboBox {
 		}
 	    }
 	});
+	bind(v,c);
     }
     private void requery() {
-	if (view != null && column != null) {
+	if (view != null && cell != null) {
 	    lockSelect = true;
 	    model.removeAllElements();
 	    for (int i = 0; i < view.size(); i++) {
 		view.probe(i);
-		model.addElement(column.is().value());
+		model.addElement(cell.value());
 	    }
 	    lockSelect = false;
 	}
@@ -77,13 +81,14 @@ public class SimpleSelector extends JComboBox {
      * @param c
      * @return
      */
-    public SimpleSelector bind(Bundle v, These<String> c) {
-	column = c.watch(new Task() {
+    private  SimpleSelector bind(Bundle v, It<String> c) {
+	/*column = c.watch(new Task() {
 	    @Override
 	    public void doTask() {
 		//System.out.println("sfgb");
 	    }
-	});
+	});*/
+	cell.bind(c);
 	view = new Bundle().afterChange(new Task() {
 	    @Override public void doTask() {
 		requery();
