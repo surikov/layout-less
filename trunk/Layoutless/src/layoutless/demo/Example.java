@@ -9,6 +9,7 @@ import layoutless.*;
 import layoutless.decor.*;
 import layoutless.decor.figures.*;
 import layoutless.controls.*;
+import layoutless.controls.table.*;
 import tee.binding.*;
 import tee.binding.it.*;
 import tee.binding.task.*;
@@ -92,7 +93,7 @@ public class Example extends JFrame {
 		.series(new Series().field(fio.is("Misha")).field(man.is(true)).field(age.is(21)).field(mail.is("mike@mail.ru")))//
 		.series(new Series().field(fio.is("Glasha")).field(man.is(false)).field(age.is(20)).field(mail.is("glasha@gmail.com")))//
 		;
-
+final Numeric test=new Numeric().value(20);
 	/*
 	View list=addrBook.select(age.is().more(20)).sort(nm.ascending());
 	final Numeric sel=new Numeric();
@@ -171,7 +172,7 @@ public class Example extends JFrame {
 		    .x.is(labelsWidth+8)
 		    .y.is(8+25*5)
 		    )
-		.item(new ComponentBox().component(new SimpleSelector(this).bind(sh, fio))
+		.item(new ComponentBox().component(new SimpleSelector(this,sh, fio.is()))
 		    .width.is(layoutless.width.property.minus(labelsWidth).minus(16))
 		    .height.is(22)
 		    .x.is(labelsWidth+8)
@@ -193,7 +194,7 @@ public class Example extends JFrame {
 		    .x(labelsWidth+8)
 		    .y(8+25*7+70+4)
 		    )*/
-		.item(new ComponentBox().component(new SimpleList(this).bind(sh, fio))
+		.item(new ComponentBox().component(new SimpleList(this,sh, fio.is()))
 		    .width.is(layoutless.width.property.minus(labelsWidth).minus(16))
 		    .height.is(120)
 		    .x.is(labelsWidth+8)
@@ -205,9 +206,13 @@ public class Example extends JFrame {
 		    .x.is(labelsWidth+8)
 		    .y.is(8+25*7+70+4+130)
 		    )
-                .item(new ComponentBox().component(new SimpleTable(this))
+                .item(new ComponentBox().component(new SimpleTable(this,sh)
+			.column(new SimpleColumn(fio.is()).title.is("FIO").order.is(10))
+			.column(new SimpleColumn(age.is().asNote()).title.is("Age").order.is(test))
+			.column(new SimpleColumn(mail.is()).title.is("EMail"))
+			)
 		    .width.is(layoutless.width.property.minus(labelsWidth).minus(16))
-		    .height.is(100)
+		    .height.is(layoutless.height.property.minus(470))
 		    .x.is(labelsWidth+8)
 		    .y.is(8+25*7+70+4+130+20+8)
 		    )
@@ -230,7 +235,8 @@ public class Example extends JFrame {
 			.text.is("Test")
 			.icon.is(new ImageIcon("ok.png"))
 			.task.is(new Task(){@Override public void doTask() {
-				System.out.println(sh.select().value());
+			    test.value(5);
+				//System.out.println(sh.select().value());
 				//sh.series(new Series().field(fio.is("1Vasya")).field(man.is(true)).field(age.is(19)).field(mail.is("1vpupkin@mail.ru")));
 				//sh.drop(sh.select().value().intValue());
 				}
