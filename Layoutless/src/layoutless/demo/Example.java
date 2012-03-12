@@ -48,7 +48,7 @@ public class Example extends JFrame {
       */
      public Example() {
 	setLayout(new BorderLayout());
-	setSize(500, 600);
+	setSize(500, 700);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	initComponents();
     }
@@ -81,7 +81,7 @@ public class Example extends JFrame {
 	final Numerics age = new Numerics();
 	final Notes mail = new Notes();
 	final Toggles man = new Toggles();
-	final Bundle sh = new Bundle()//
+	final Bundle testData = new Bundle()//
 		.series(new Series().field(fio.is("Vasya")).field(man.is(true)).field(age.is(19)).field(mail.is("vpupkin@mail.ru")))//
 		.series(new Series().field(fio.is("Petya")).field(man.is(true)).field(age.is(22)).field(mail.is("petrpetrov@gmail.com")))//
 		.series(new Series().field(fio.is("Sasha")).field(man.is(true)).field(age.is(20)).field(mail.is("alxndr@aol.com")))//
@@ -172,7 +172,7 @@ final Numeric test=new Numeric().value(20);
 		    .x.is(labelsWidth+8)
 		    .y.is(8+25*5)
 		    )
-		.item(new ComponentBox().component(new SimpleSelector(this,sh, fio.is()))
+		.item(new ComponentBox().component(new SimpleSelector(this,testData, fio.is()))
 		    .width.is(layoutless.width.property.minus(labelsWidth).minus(16))
 		    .height.is(22)
 		    .x.is(labelsWidth+8)
@@ -184,17 +184,7 @@ final Numeric test=new Numeric().value(20);
 		    .x.is(labelsWidth+8)
 		    .y.is(8+25*7)
 		    )
-		/*.item(new ComponentBox()
-		    .component(new SimpleTable()
-			.column(new TableColumn().title("First"))
-			.column(new TableColumn().title("Second"))
-			)
-		    .width(layoutless.width().minus(labelsWidth).minus(16))
-		    .height(120)
-		    .x(labelsWidth+8)
-		    .y(8+25*7+70+4)
-		    )*/
-		.item(new ComponentBox().component(new SimpleList(this,sh, fio.is()))
+		.item(new ComponentBox().component(new SimpleList(this,testData, fio.is()))
 		    .width.is(layoutless.width.property.minus(labelsWidth).minus(16))
 		    .height.is(120)
 		    .x.is(labelsWidth+8)
@@ -206,7 +196,7 @@ final Numeric test=new Numeric().value(20);
 		    .x.is(labelsWidth+8)
 		    .y.is(8+25*7+70+4+130)
 		    )
-                .item(new ComponentBox().component(new SimpleTable(this,sh)
+                .item(new ComponentBox().component(new SimpleTable(this,testData).selection.is(2)
 			.column(new SimpleColumn(fio.is()).title.is("FIO").order.is(10))
 			.column(new SimpleColumn(age.is().asNote()).title.is("Age").order.is(test))
 			.column(new SimpleColumn(mail.is()).title.is("EMail"))
