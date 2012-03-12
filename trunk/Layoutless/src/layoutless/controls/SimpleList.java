@@ -36,7 +36,7 @@ public class SimpleList extends JScrollPane {
      * 
      * @param win
      */
-    public SimpleList(Window win,Bundle v, It<String> c) {
+    public SimpleList(Window win,Bundle bundle, It<String> c) {
 	super();
 	cell=new Note().value("");
 	window = win;
@@ -79,7 +79,7 @@ public class SimpleList extends JScrollPane {
 		}
 	    }
 	});
-	bind(v,c);
+	bind(bundle,c);
     }
     private void requery() {
 	lockSelect = true;
