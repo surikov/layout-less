@@ -15,7 +15,7 @@ import javax.swing.*;
  * @author User
  */
 public class SimpleLabel extends JLabel {
-    public NoteProperty<SimpleLabel> text;
+    final public NoteProperty<SimpleLabel> text= new NoteProperty<SimpleLabel>(this);
     public ToggleProperty<SimpleLabel> normalAlignment;
     private Window window;
     private WindowAdapter windowAdapter = new WindowAdapter() {
@@ -34,7 +34,7 @@ public class SimpleLabel extends JLabel {
 	super();
 	window = win;
 	window.addWindowListener(windowAdapter);
-	text = new NoteProperty<SimpleLabel>(this);
+	//text = new NoteProperty<SimpleLabel>(this);
 	text.property.value("").afterChange(new Task() {
 	    @Override public void doTask() {
 		if (text != null) {

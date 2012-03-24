@@ -256,5 +256,8 @@ final Numeric test=new Numeric().value(20);
 		;
 	//nu.minimum(5).maximum(9).decimalPlaces(3).numeric(17.123456);
 	this.add(layoutless, BorderLayout.CENTER);
+	/*SimpleLabel ttt=new SimpleLabel(null);
+	ttt.text.property.value("");
+	ttt.text=null;*/
     }
 }

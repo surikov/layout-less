@@ -67,7 +67,7 @@ public class SimpleButton extends JButton {
 	this.addActionListener(new ActionListener() {
 	    @Override public void actionPerformed(ActionEvent e) {
 		if (task.property != null) {
-		    task.property.start();
+		    task.property.value().start();
 		}
 	    }
 	});
