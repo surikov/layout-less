@@ -73,7 +73,7 @@ public class SimpleList extends JScrollPane {
 		if (e.getClickCount() == 2) {
 		    if (selection.property.value() >= 0 && selection.property.value() < model.getSize()) {
 			if (task.property != null) {
-			    task.property.start();
+			    task.property.value().start();
 			}
 		    }
 		}
