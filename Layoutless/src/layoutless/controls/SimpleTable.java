@@ -184,7 +184,7 @@ public class SimpleTable extends JScrollPane implements ListSelectionListener {
                     //System.out.println(":" + selection.property.value());
                     if (selection.property.value() >= 0 && selection.property.value() < tableModel.getRowCount()) {
 			if (task.property != null) {
-			    task.property.start();
+			    task.property.value().start();
 			}
 		    }
                 }
